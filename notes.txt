@@ -1,0 +1,38 @@
+mongo: start mangodn shell
+db.serverCmdLineOpts(): check dbPath
+exit:
+
+checking documents:
+{
+>mongo
+ MongoDB shell version: 3.2.0
+ connecting to: test
+> show dbs
+admin      0.000GB
+config     0.000GB
+local      0.000GB
+myproject  0.000GB
+something  0.000GB
+testdata   0.000GB
+> use myproject
+switched to db dbName
+> show collections
+documents
+> db.collectionName.find().pretty()
+}
+Drop MongoDB:
+{
+ > show dbs
+  admin 0.000GB
+  local 0.000GB
+ > use tutorialkart
+   switched to db tutorialkart
+ > db.dropDatabase()
+    { "dropped" : "tutorialkart", "ok" : 1 }
+ > show dbs
+   admin 0.000GB
+   local 0.000GB}
+
+
+count how many records in one collection
+> db.collection.count()

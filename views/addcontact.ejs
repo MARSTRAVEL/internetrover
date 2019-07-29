@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>InternetRover</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <a href="/index">InternetRover</a>
+       </div>
+      <div class="list-group list-group-flush">
+        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
+        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
+        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Amination</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li>
+                <a class="nav-link" >Welcome, <%= user.username %></a>
+            </li>
+            <li>
+            <a class="nav-link" href="logout">LOGOUT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <form >
+        <div class="container-fluid">
+          <h1 class="mt-4">Add Contact</h1>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom01" >First name <span> (Required)</span></label>
+            <input type="text" placeholder="First anme" class="form-control input-md" name="firstName" >
+                <div class="alert alert-danger" role="alert" id="firstName_warning" style="display:none;">
+                  This is firstName warning alert
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom02" >Last name</label>
+              <input type="text" placeholder="First anme" class="form-control input-md" name="lastName" >
+                  <div class="alert alert-danger" role="alert" id="lastName_warning" style="display:none;">
+                    This is lastName warning alert
+                  </div>
+              </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Nationality<span> (Required)</span></label>
+          <div class="col-md-4">
+              <div class="input-group">
+                <input type="text" placeholder="Nationality" class="form-control input-md" name="nationality">
+                <div class="alert alert-danger" role="alert" id="lastName_warning" style="display:none;">
+                  This is nationality warning alert
+                </div>
+               </div>
+             </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address<span> (Required)</span></label>
+            <div class="col-md-4">
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" >Description</label>
+            <div class="col-md-4">
+              <div class="input-group">
+                 <input type="text" placeholder="Description" class="form-control input-md" name="description">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+           <label class="col-md-4 control-label" for="Gender">Gender</label>
+           <div class="col-md-4">
+             <label class="mr-3"> <input type="radio"  name="sex" value="Male"> Male
+             </label>
+             <label class="mr-3"><input type="radio" name="sex" value="Female"> Female
+             </label>
+           </div>
+          </div>
+          <div class="form-group">
+          <div class="col-md-4">
+             <button type="button" name="submit" class="btn btn-danger" id="btn" disabled >Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    $('#btn').click(function(){
+      // send post to save form in database
+      $.post('/addNewContact', {
+        firstName: $( "input[name=firstName]" ).val(),
+        lastName: $( "input[name=lastName]" ).val(),
+        nationality: $( "input[name=nationality]" ).val(),
+        description: $( "input[name=description]" ).val(),
+        gender: $("input:radio[name='sex']:checked").val(),
+      }, function(data){
+        if (data.result === 1) {
+          alert('saved!');
+          // clean all input field
+          $('input[type=text]').val('');
+        }else if (data.result === -1) {
+            alert('Alreay exit!');
+        }else if (data.result === -2) {
+          alert('server error!');
+        }
+      });
+    });
+// propfind request to check firstName
+    $("input[name=firstName]").blur(function(){
+      const alphaExp = /^[a-zA-Z]+$/;
+      const firstName = $("input[name=firstName]").val();
+      if (!firstName || !firstName.match(alphaExp)) {
+        $('#btn').attr('disabled', true);
+        $('#firstName_warning').removeClass('alert-success').addClass('alert-danger').html('type correct firstName here').show();
+      }else {
+        $('#btn').attr('disabled', false);
+        $('#firstName_warning').removeClass('alert-danger').addClass('alert-success').html('Good typing!').show();
+      }
+/*
+    $.ajax({
+        type: "propfind",
+        url: "/" + $("input[name=firstName] ").val(),
+      });
+      */
+    });
+
+// focus on input field, empty input
+    $("input[name=firstName]").focus(function(){
+        $('#firstName_warning').html('type correct firstName here').hide();
+    });
+  </script>
+</body>
+
+</html>

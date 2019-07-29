@@ -1,0 +1,23 @@
+body{
+  background-color: #00BFFF;
+}
+.container{
+  background-color: #00BFFF;
+  display: table;
+  width: 20%;
+  margin-top: 10%;
+}
+
+#form_login{
+  display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+}
+
+#login_button{
+  margin-left: 20%;
+}
+
+#register_button{
+  margin-left: 20%;
+}
