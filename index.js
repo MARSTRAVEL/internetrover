@@ -18,12 +18,12 @@ app.use(session({
   cookie: { maxAge:1000*60*10 },
   // store current user in database and max age:...
   store: new MongoStore({
-    url: MONGOLAB_AMBER_URI || localDB ,
+    url: process.env.MONGOLAB_AMBER_URI || localDB ,
   }),
 }));
 // const MONGO_URI = "mongodb+srv://yunlong:<longlovesuomi810>@cluster0-m2asn.mongodb.net/test?retryWrites=true&w=majority";
 
-mongoose.connect(MONGOLAB_AMBER_URI || localDB, { useNewUrlParser: true});
+mongoose.connect(process.env.MONGOLAB_AMBER_URI || localDB, { useNewUrlParser: true});
 app.set('view engine', 'ejs');
 app.use(function(req, res, next){
 　　res.locals.user = req.session.user;
