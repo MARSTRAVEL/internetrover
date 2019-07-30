@@ -6,7 +6,9 @@ const se = require('./modules/contact.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const formidable = require('formidable');
- const MONGOLAB_AMBER_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
+// const MONGOLAB_AMBER_URI = "mongodb+srv://heroku_8lmgrpq2:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
+
+const MONGOLAB_AMBER_URI = "mongodb://heroku_8lmgrpq2:longlovesuomi810@ds159631.mlab.com:59631/heroku_8lmgrpq2";
 const port = process.env.PORT || 8080;
 const localDB = 'mongodb://localhost:27017/internetRover';
 
