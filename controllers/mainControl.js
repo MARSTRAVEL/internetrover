@@ -151,7 +151,7 @@ exports.showContact = function(req, res){
 
 exports.showAddContact = function(req, res){
   if (req.session.user) {
-    res.render('addContact', {});
+    res.render('addcontact', {});
   }else {
     res.redirect('login');
   }

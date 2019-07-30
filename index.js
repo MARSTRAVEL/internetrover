@@ -23,7 +23,6 @@ app.use(session({
     url: MONGOLAB_URI,
   }),
 }));
-// const MONGO_URI = "mongodb+srv://yunlong:<longlovesuomi810>@cluster0-m2asn.mongodb.net/test?retryWrites=true&w=majority";
 
 mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
 app.set('view engine', 'ejs');
