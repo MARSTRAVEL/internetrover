@@ -6,7 +6,7 @@ const se = require('./modules/contact.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const formidable = require('formidable');
-// const mondbURL = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
+ const MONGOLAB_AMBER_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
 const port = process.env.PORT || 8080;
 const localDB = 'mongodb://localhost:27017/internetRover';
 
