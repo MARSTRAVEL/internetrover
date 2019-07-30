@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": "10.x"
+    "node": "10.x",
   },
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MARSTRAVEL/internetrover"
-  },
+    "url": "https://github.com/MARSTRAVEL/internetrover",
+  }
 }
