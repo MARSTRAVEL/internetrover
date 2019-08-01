@@ -15,6 +15,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="css/news.css">
 
 </head>
 
@@ -59,12 +61,39 @@
       </nav>
 
       <div class="container-fluid" style="background-color:white;">
-        <h1 class="mt-4">News</h1>
-        <button type="button" name="button" id="scrapenews_button">
-          Scrap news today
-        </button>
-        <label>Update Time: </label>
-        <time id="update_time"><%= date%></time>
+        <div class="news">
+          <h1 class="mt-4">News</h1>
+          <button type="button" name="button" id="scrapenews_button">
+            Scrap news today
+          </button>
+          <label>Update Time: </label>
+          <time id="update_time"><%= date%></time>
+          <p>How it works!</p>
+          <p>If update time is not the today, please click button.</p>
+          <p>then go to news page to read news today!</p>
+        </div>
+        <div class="container_weather" id ="weather">
+          <header class="header">
+            <div class="search">
+              <input type="text" placeholder="Enter City Name" id="search_city">
+              <button type="button" name="button" id="current_weather">search</button>
+            </div>
+          </header>
+          <main id="main">
+            <div class="city-icon">
+              <div class="city-icon-holder">
+                <div id="cityName"></div>
+                <img src="" alt="" id="icon">
+              </div>
+            </div>
+            <div class="temperature">
+              <div id="tempature"></div>
+            </div>
+            <div class="humidity">
+              <div id="humidity"></div>
+            </div>
+          </main>
+        </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -78,43 +107,80 @@
 
   <!-- Menu Toggle Script -->
   <script>
-    $("#menu-toggle").click(function(e) {
+  $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
 
   $('#scrapenews_button').click(function(){
-let date = document.getElementById("update_time").textContent;
-date = parseInt(date);
+    let date = document.getElementById("update_time").textContent;
+    date = parseInt(date);
 
-const d = new Date();
-const year = d.getFullYear().toString();
-let month = d.getMonth();
-month = (month+1).toString();
-const day = d.getDate().toString();
-const dateNow = parseInt(year+month+day);
+    const d = new Date();
+    const year = d.getFullYear().toString();
+    let month = d.getMonth();
+    month = (month+1).toString();
+    const day = d.getDate().toString();
+    const dateNow = parseInt(year+month+day);
 
-if (dateNow > date) {
+   if (dateNow > date) {
 
-  $.ajax({
-    url: "/dashboard/news",
-    type: 'post',
-    data: dateNow.toString(),
-    dataType: 'text',
-    });
-    document.getElementById("update_time").textContent = dateNow;
-}
-
-/*
-if (parseInt(year+month+day) > parseInt(date) ) {
-  console.log('need to update');
-  $.ajax({
-    url: "/dashboard/news",
-    });
-
-};
-*/
+      $.ajax({
+      url: "/dashboard/news",
+      type: 'post',
+      data: dateNow.toString(),
+      dataType: 'text',
+     });
+    document.getElementById("update_time").textContent = dateNow;}
   });
+
+  const weather = (url) => {
+    // Create the XHR request
+    const request = new XMLHttpRequest();
+    // Return a new promise.
+    return new Promise((resolve, reject) => {
+      request.open('POST', url, true);
+      request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      request.onload = () => {
+        // This is called even on 404 etc
+        // so check the status
+        if (request.status === 200 && request.readyState === 4) {
+          // Resolve the promise with the response text
+          resolve(request.response);
+        } else {
+          // Otherwise reject with the status text
+          // which will hopefully be a meaningful error
+          reject(Error(request.statusText));
+        }
+      };
+      // Handle network errors
+      request.onerror = () => {
+        reject(Error('Network Error'));
+      };
+      // Make the request
+      request.send();
+    });
+  };
+  $('#current_weather').click(function(){
+    const openWeatherAPIKey = 'be4f63ffaad56d681f19dba18437e57e';
+    const city = document.getElementById('search_city').value;
+    let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid="+openWeatherAPIKey;
+    weather(searchLink)
+    .then((response)=>{
+      const result = JSON.parse(response);
+      const cityName = result.name;
+      const tempature = parseInt(result.main.temp - 273) + "°";
+      const humidity = result.main.humidity + "%";
+      const icon = "http://openweathermap.org/img/w/" + result.weather[0].icon + ".png";
+      let city_name = document.getElementById('cityName').innerHTML = cityName;
+      let city_tempature = document.getElementById('tempature').innerHTML = tempature;
+      let city_humidity = document.getElementById('humidity').innerHTML = humidity;
+      let city_icon = document.getElementById('icon').src = icon;
+      })
+      .catch((error) => {
+      let city_name = document.getElementById('cityName').innerHTML = 'Please type correct city name For example: beijing';
+    });
+    });
   </script>
 
 </body>
