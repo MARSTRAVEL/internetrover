@@ -181,8 +181,8 @@ const dateNow = current_date();
       const humidity = result.main.humidity + "%";
       const icon = "http://openweathermap.org/img/w/" + result.weather[0].icon + ".png";
       let city_name = document.getElementById('cityName').innerHTML = cityName;
-      let city_tempature = document.getElementById('tempature').innerHTML = tempature;
-      let city_humidity = document.getElementById('humidity').innerHTML = humidity;
+      let city_tempature = document.getElementById('tempature').innerHTML = '<p>'+'tempature:'+'</p>'+tempature;
+      let city_humidity = document.getElementById('humidity').innerHTML = '<p>'+'tempature:'+'</p>'+humidity;
       let city_icon = document.getElementById('icon').src = icon;
       })
       .catch((error) => {
