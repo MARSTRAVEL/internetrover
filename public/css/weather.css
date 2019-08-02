@@ -3,7 +3,6 @@
 .container_weather{
   width: 100%;
   height: 300px;
-  border-radius: 25px;
   box-shadow: 0 20px 40px 0px rgba(0,0,0,0.3)
 }
 
@@ -31,7 +30,7 @@
 .city-icon-holder {
   position:absolute;
   left: 25%;
-  top: 40%;
+  top: 20%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
@@ -65,19 +64,36 @@
   position: absolute;
   left: 50%;
   top:0%;
-  height: 40%;
+  height: 20%;
   width: 50%;
-  background-color: #9C27B0;
+  background-color: #FFFF00;
 }
 
 .humidity {
-  height: 40%;
+  height: 20%;
+  width: 50%;
+  position:absolute;
+  left:50%;
+  top:20%;
+  background-color: #E91E63;
+}
+
+.pressure{
+  height: 20%;
   width: 50%;
   position:absolute;
   left:50%;
   top:40%;
+  background-color: #F5F5F5;
+}
+.wind{
+  height: 20%;
+  width: 50%;
+  position:absolute;
+  left:50%;
+  top:60%;
   border-bottom-right-radius: 25px;
-  background-color: #E91E63;
+  background-color: #D8BFD8;
 }
 
 #search-btn {

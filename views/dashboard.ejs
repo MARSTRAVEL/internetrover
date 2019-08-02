@@ -62,38 +62,46 @@
       </nav>
 
       <div class="container-fluid" style="background-color:white;">
-        <div class="news">
-          <h1 class="mt-4">News</h1>
-          <button type="button" name="button" id="scrapenews_button">
-            Scrap news today
-          </button>
-          <label>Update Time: </label>
-          <time id="update_time"><%= date%></time>
-          <p>How it works!</p>
-          <p>If update time is not the today, please click button.</p>
-          <p>then go to news page to read news today!</p>
-        </div>
-        <div class="container_weather" id ="weather">
-          <header class="header">
-            <div class="search">
-              <input type="text" placeholder="Enter City Name" id="search_city">
-              <button type="button" name="button" id="current_weather">search</button>
-            </div>
-          </header>
-          <main id="main">
-            <div class="city-icon">
-              <div class="city-icon-holder">
-                <div id="cityName"></div>
-                <img src="" alt="" id="icon">
+        <div class="row">
+          <div class="news col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <h1 class="mt-4">News</h1>
+            <button type="button" name="button" id="scrapenews_button">
+              Scrap news today
+            </button>
+            <label>Update: </label>
+            <time id="update_time"><%= date%></time>
+            <p>How it works!</p>
+            <p>If update time is not the today, please click button.</p>
+            <p>then go to news page to read news today!</p>
+          </div>
+          <div class="container_weather col-lg-3 col-md-3 col-sm-12 col-xs-12" id ="weather">
+            <header class="header">
+              <div class="search">
+                <input type="text" placeholder="Enter City Name" id="search_city">
+                <button type="button" name="button" id="current_weather">search</button>
               </div>
-            </div>
-            <div class="temperature">
-              <div id="tempature"></div>
-            </div>
-            <div class="humidity">
-              <div id="humidity"></div>
-            </div>
-          </main>
+            </header>
+            <main id="main">
+              <div class="city-icon">
+                <div class="city-icon-holder">
+                  <div id="cityName"></div>
+                  <img src="" alt="" id="icon">
+                </div>
+              </div>
+              <div class="temperature">
+                <div id="tempature">T</div>
+              </div>
+              <div class="humidity">
+                <div id="humidity">H</div>
+              </div>
+              <div class="pressure">
+                <div id="pressure">P</div>
+              </div>
+              <div class="wind">
+                <div id="wind">W</div>
+              </div>
+            </main>
+          </div>
         </div>
       </div>
     </div>
@@ -174,20 +182,35 @@ const dateNow = current_date();
     const openWeatherAPIKey = 'be4f63ffaad56d681f19dba18437e57e';
     const city = document.getElementById('search_city').value;
     let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid="+openWeatherAPIKey;
+    let city_name = document.getElementById('cityName');
+    let city_tempature = document.getElementById('tempature');
+    let city_humidity = document.getElementById('humidity');
+    let city_icon = document.getElementById('icon');
+    let city_pressure = document.getElementById('pressure');
+    let city_wind = document.getElementById('wind');
     weather(searchLink)
     .then((response)=>{
       const result = JSON.parse(response);
+      console.log(result);
       const cityName = result.name;
       const tempature = parseInt(result.main.temp - 273) + "°";
       const humidity = result.main.humidity + "%";
+      const pressure = result.main.pressure + 'hPa';
+      const wind = result.wind.speed + 'meter/sec';
       const icon = "http://openweathermap.org/img/w/" + result.weather[0].icon + ".png";
-      let city_name = document.getElementById('cityName').innerHTML = cityName;
-      let city_tempature = document.getElementById('tempature').innerHTML = '<p>'+'tempature:'+'</p>'+tempature;
-      let city_humidity = document.getElementById('humidity').innerHTML = '<p>'+'tempature:'+'</p>'+humidity;
-      let city_icon = document.getElementById('icon').src = icon;
+      city_name.innerHTML = cityName;
+      city_tempature.innerHTML = '<p>'+'tempature:'+'</p>'+ tempature;
+      city_humidity.innerHTML = '<p>'+'humidity:'+'</p>'+ humidity;
+      city_pressure.innerHTML = '<p>'+'pressure:'+'</p>'+ pressure;
+      city_wind.innerHTML = '<p>'+'wind:'+'</p>'+ wind;
+      city_icon.src = icon;
       })
       .catch((error) => {
-      let city_name = document.getElementById('cityName').innerHTML = 'Please type correct city name For example: beijing';
+        city_name.innerHTML = '';
+        city_tempature.innerHTML = '';
+        city_humidity.innerHTML = '';
+        city_icon.src = '';
+        alert('Please Type correct city, for Example: beijing');
     });
     });
   </script>
