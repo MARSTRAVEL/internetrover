@@ -1,12 +1,6 @@
-.container{
-  
-  display: table;
-  width: 30%;
-  margin-top: 10%;
-}
-
-#form_login{
-  display: table-cell;
-   text-align: center;
-   vertical-align: middle;
+@media only screen and (min-width: 768px) {
+  .form-group{
+    margin-left: 35%;
+    margin-right: 35%;
+  }  
 }
