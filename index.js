@@ -8,9 +8,8 @@ const MongoStore = require('connect-mongo')(session);
 const formidable = require('formidable');
 const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
 
-//const MONGOLAB_AMBER_URI = "mongodb://heroku_8lmgrpq2:longlovesuomi810@ds159631.mlab.com:59631/heroku_8lmgrpq2";
 const port = process.env.PORT || 8080;
-// const localDB = 'mongodb://localhost:27017/internetRover';
+//const localDB = 'mongodb://localhost:27017/internetRover';
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
@@ -36,8 +35,8 @@ app.use(function(req, res, next){
 
 app.get('/login', mainControl.getlogin);
 app.post('/login', mainControl.postlogin);
-app.get('/register', mainControl.showRegister);
-app.post('/register', mainControl.postregister);
+app.get('/signup', mainControl.showsignup);
+app.post('/signup', mainControl.postsignup);
 app.get('/logout', mainControl.logout);
 app.get('/index', mainControl.index);
 app.get('/dashboard', mainControl.dashboard);
@@ -54,6 +53,9 @@ app.get('/allContacts', mainControl.getAllContacts);
 app.get('/news', mainControl.shownews);
 app.get('/wordcloud', mainControl.showWordCloud);
 
+app.get('/test', function(req, res){
+  res.render('test');
+});
 app.use(express.static('public'));
 
 app.listen(port);
