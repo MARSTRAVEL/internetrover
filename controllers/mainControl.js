@@ -14,7 +14,7 @@ const yleUrl = "https://yle.fi/uutiset/osasto/news/";
 
 exports.getlogin = function(req, res){
   req.session.user = null;
-  res.render('login', {message: 'Please Log In First!'});
+  res.render('login');
 };
 
 exports.postlogin = function(req, res){
@@ -38,11 +38,11 @@ exports.postlogin = function(req, res){
     });
 };
 
-exports.showRegister = function(req, res){
-  res.render('register');
+exports.showsignup = function(req, res){
+  res.render('signup');
 };
 
-exports.postregister = function(req, res){
+exports.postsignup = function(req, res){
   const form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
     const user = new users({
