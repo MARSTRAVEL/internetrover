@@ -8,8 +8,9 @@ const MongoStore = require('connect-mongo')(session);
 const formidable = require('formidable');
 const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
 
+
 const port = process.env.PORT || 8080;
-//const localDB = 'mongodb://localhost:27017/internetRover';
+const localDB = 'mongodb://localhost:27017/internetRover';
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
@@ -19,11 +20,11 @@ app.use(session({
   cookie: { maxAge:1000*60*10 },
   // store current user in database and max age:...
   store: new MongoStore({
-    url: MONGOLAB_URI,
+    url: localDB,
   }),
 }));
 
-mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
+mongoose.connect(localDB, { useNewUrlParser: true});
 app.set('view engine', 'ejs');
 app.use(function(req, res, next){
 　　res.locals.user = req.session.user;
@@ -37,6 +38,7 @@ app.get('/login', mainControl.getlogin);
 app.post('/login', mainControl.postlogin);
 app.get('/signup', mainControl.showsignup);
 app.post('/signup', mainControl.postsignup);
+
 app.get('/logout', mainControl.logout);
 app.get('/index', mainControl.index);
 app.get('/dashboard', mainControl.dashboard);
@@ -52,10 +54,7 @@ app.get('/allContacts', mainControl.getAllContacts);
 // visit /news >> scrape >> show news; later on( first time visit /news >> scrape >> save to db >> show news)
 app.get('/news', mainControl.shownews);
 app.get('/wordcloud', mainControl.showWordCloud);
-
-app.get('/test', function(req, res){
-  res.render('test');
-});
+app.get('/cv', function(req, res){res.render('cv');});
 app.use(express.static('public'));
 
 app.listen(port);
