@@ -10,7 +10,7 @@ const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mong
 
 
 const port = process.env.PORT || 8080;
-const localDB = 'mongodb://localhost:27017/internetRover';
+//const localDB = 'mongodb://localhost:27017/internetRover';
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
@@ -20,11 +20,11 @@ app.use(session({
   cookie: { maxAge:1000*60*10 },
   // store current user in database and max age:...
   store: new MongoStore({
-    url: localDB,
+    url: MONGOLAB_URI,
   }),
 }));
 
-mongoose.connect(localDB, { useNewUrlParser: true});
+mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
 app.set('view engine', 'ejs');
 app.use(function(req, res, next){
 　　res.locals.user = req.session.user;
