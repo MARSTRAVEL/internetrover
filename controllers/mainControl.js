@@ -7,6 +7,8 @@ const url = require('url');
 const axios = require('axios');// Promise based HTTP client for the browser and node.js
 const cheerio = require('cheerio'); // Basically jQuery for node.js
 const scrapenews = require('./scrapenews.js');
+const ejs = require('ejs');
+const fs = require('fs');
 
 const bbcUrl ='https://www.bbc.com/news';
 const reutersUrl = 'https://www.reuters.com/news/archive/worldNews';
@@ -36,6 +38,85 @@ exports.postlogin = function(req, res){
       }
     });
     });
+};
+
+const processCvData = (fields) =>{
+  let data ={};
+  data.firstName = fields.firstName;
+  data.lastName = fields.lastName;
+  data.phone = fields.phone;
+  data.eMail = fields.eMail;
+
+  if (typeof fields.link === 'string') {
+    data.link=[fields.link];
+    data.linkLable = [fields.linkLable];
+  } else {
+    data.link=fields.link;
+    data.linkLable = fields.linkLable;
+  }
+  if (typeof fields.languageLable ==='string') {
+    data.languageLable = [fields.languageLable];
+    data.languageLevel = [fields.languageLevel];
+  }
+  else {
+    data.languageLable = fields.languageLable;
+    data.languageLevel = fields.languageLevel;
+  }
+  if (typeof fields.interestLable ==='string') {
+    data.interestLable = [fields.interestLable];
+  }else {
+    data.interestLable = fields.interestLable;
+  }
+  if (typeof fields.experienceLable ==='string') {
+    data.experienceLable = [fields.experienceLable];
+    data.experiencePeriod = [fields.experiencePeriod];
+    data.experienceDescription = [fields.experienceDescription];
+  }else {
+    data.experienceLable = fields.experienceLable;
+    data.experiencePeriod = fields.experiencePeriod;
+    data.experienceDescription = fields.experienceDescription;
+  }
+  if (typeof fields.projectLable === 'string') {
+    data.projectLable = [fields.projectLable];
+    data.projectDescription = [fields.projectDescription];
+    data.projectLink = [fields.projectLink];
+  }else {
+    data.projectLable = fields.projectLable;
+    data.projectDescription = fields.projectDescription;
+    data.projectLink = fields.projectLink;
+  }
+  if (typeof fields.educationPeriod === 'string') {
+    data.educationPeriod = [fields.educationPeriod];
+    data.instituionName = [fields.instituionName];
+    data.major = [fields.major];
+  }else {
+    data.educationPeriod = fields.educationPeriod;
+    data.instituionName = fields.instituionName;
+    data.major = fields.major;
+  }
+return data;
+}
+exports.postcvform = function(req, res){
+  const form = new formidable.IncomingForm();
+  form.uploadDir = "./public/temPictures";
+  form.keepExtensions = true;
+  form.keepFilenames = true;
+  form.parse(req, function(err, fields, files) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      const data = processCvData(fields);
+      data.profilePhoto = files.profilePhoto.name;
+      fs.rename(files.profilePhoto.path, form.uploadDir + "/" + files.profilePhoto.name, function(err){
+        if (err) {
+          console.log(err);
+        }
+        return;
+      });
+      res.render('cvtemplate', {cvdetailes: data});
+    }
+  });
 };
 
 exports.showsignup = function(req, res){

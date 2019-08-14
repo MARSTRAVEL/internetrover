@@ -13,6 +13,8 @@ const port = process.env.PORT || 8080;
 //const localDB = 'mongodb://localhost:27017/internetRover';
 
 app.set('trust proxy', 1) // trust first proxy
+app.set('view engine', 'ejs');
+
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -23,9 +25,6 @@ app.use(session({
     url: MONGOLAB_URI,
   }),
 }));
-
-mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
-app.set('view engine', 'ejs');
 app.use(function(req, res, next){
 　　res.locals.user = req.session.user;
 　　var err = req.session.error;
@@ -34,15 +33,25 @@ app.use(function(req, res, next){
 　　next();
 });
 
+mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
+
 app.get('/login', mainControl.getlogin);
 app.post('/login', mainControl.postlogin);
+
 app.get('/signup', mainControl.showsignup);
 app.post('/signup', mainControl.postsignup);
 
 app.get('/logout', mainControl.logout);
 app.get('/index', mainControl.index);
+
 app.get('/dashboard', mainControl.dashboard);
 app.post('/dashboard/news', mainControl.dashboardNews);
+
+// visit /news >> scrape >> show news; later on( first time visit /news >> scrape >> save to db >> show news)
+app.get('/news', mainControl.shownews);
+app.get('/wordcloud', mainControl.showWordCloud);
+app.get('/cv', function(req, res){res.render('cv');});
+
 app.get('/contact', mainControl.showContact);  //show contact section
 app.get('/addContact', mainControl.showAddContact); // show addContact form
 app.post('/addNewContact', mainControl.addNewContact); // ajax send form to server and save form
@@ -51,10 +60,14 @@ app.delete('/contact/:firstName',   mainControl.deletecontact); // /: means rece
 app.get('/contact/:firstName', mainControl.showUpdate);// show motified contact
 app.post('/contact/:firstName',     mainControl.updateContact);
 app.get('/allContacts', mainControl.getAllContacts);
-// visit /news >> scrape >> show news; later on( first time visit /news >> scrape >> save to db >> show news)
-app.get('/news', mainControl.shownews);
-app.get('/wordcloud', mainControl.showWordCloud);
-app.get('/cv', function(req, res){res.render('cv');});
+
+
+app.get('/generatecv', function(req, res){
+  res.render('generatecv');
+});
+app.post('/generatecv', mainControl.postcvform);
+
+
 app.use(express.static('public'));
 
 app.listen(port);

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>InternetRover</title>
+  <link rel="shortcut icon" href='../pictures/icon.ico'>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon -->
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="css/generatecv.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><a >LOGO</a></div>
+      <div class="list-group list-group-flush">
+        <a href="/index" class="list-group-item list-group-item-action bg-light">InternetRover</a>
+        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
+        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
+        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Amination</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">
+          <i class="fa fa-navicon" style="font-size:20px"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                 <span class="sr-only">(current)</span>
+              <p>
+                <a href="logout">LOGOUT</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <form role="form"  enctype="multipart/form-data" method="post" id="cv_form">
+
+          <div class="row ">
+            <div class="col ">
+              <label for="First Name">First Name</label>
+              <input type="text" class="form-control" id="firstname"  name="firstName" placeholder="First Name" required="required">
+            </div>
+            <div class="col">
+              <label for="Last name">Last name</label>
+              <input type="text" class="form-control" id="lastname"  name="lastName" placeholder="Last name" required="required">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="Phone">Phone</label>
+              <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" required="required">
+            </div>
+            <div class="col">
+              <label for="E-mail">E-mail</label>
+              <input type="text" class="form-control" id="email" name="eMail" placeholder="E-mail" required="required">
+            </div>
+          </div>
+          <div class="row uploadFile">
+            <div class="col-md-4">
+              <label for="">Please upload a profile photo. Max50kb</label>
+              <input type="file"  id="profilePhoto" value="Upload a file" style="border: 0px none;"class="form-control"  name="profilePhoto" accept="image/*" />
+            </div>
+          </div>
+
+          <div class="row title links">
+            <div class="col">
+              <h3>Social Link & Website</h3>
+            </div>
+          </div>
+          <div class="link">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="Lable">Lable</label>
+                  <input type="text" class="form-control" id="linkLable" name="linkLable" placeholder="Lable">
+                </div>
+                <div class="col-md-7">
+                  <label for="Link">Link</label>
+                  <input type="text" class="form-control" id="link" name="link" placeholder="Link">
+                </div>
+              </div>
+          </div>
+          <div class="row addLink">
+            <div class="col">
+              <button type="submit" class="btn btn-light" id="addLink"><i class='fas fa-plus' style='font-size:30px;color:green'></i></button>
+            </div>
+          </div>
+
+          <div class="row title languages">
+            <div class="col">
+              <h3>Language</h3>
+            </div>
+          </div>
+          <div class="language">
+            <div class="row">
+              <div class="col-md-3">
+                <label for="Lable">Language</label>
+                <input type="text" class="form-control" id="languageLable" name="languageLable" placeholder="Language">
+              </div>
+              <div class="col-md-7">
+                <label for="Level">Level</label>
+                <input type="text" class="form-control" id="languageLevel" name="languageLevel" placeholder="Level">
+              </div>
+            </div>
+          </div>
+          <div class="row addLanguage">
+            <div class="col">
+              <button type="submit" class="btn btn-light" id="addLanguage"><i class='fas fa-plus' style='font-size:30px;color:green'></i></button>
+            </div>
+          </div>
+
+          <div class="row title interests">
+            <div class="col">
+              <h3>Interests</h3>
+            </div>
+          </div>
+          <div class="interest">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="interestLable" name="interestLable" placeholder="Interest">
+                </div>
+              </div>
+          </div>
+          <div class="addInterest">
+            <div class="row">
+              <div class="col">
+                <button type="submit" class="btn btn-light" id="addInterest"><i class='fas fa-plus' style='font-size:30px;color:green'></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row title experiences">
+            <div class="col">
+              <h3>Experiences</h3>
+            </div>
+          </div>
+          <div class=" experience">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="Lable">Experience Lable</label>
+                  <input type="text" class="form-control" id="experienceLable" name="experienceLable" placeholder="experienceLable">
+                </div>
+                <div class="col-md-6">
+                  <label for="Period">Experience Period</label>
+                  <input type="text" class="form-control" id="experiencePeriod" name="experiencePeriod" placeholder="experiencePeriod">
+                </div>
+                <div class="col-md-12">
+                   <textarea  form="cv_form" class="form-control" id="experienceDescription"  name="experienceDescription" rows="3" placeholder="experienceDescription"></textarea>
+                </div>
+              </div>
+          </div>
+          <div class="row addExperience">
+            <div class="col">
+              <button type="submit" class="btn btn-light" id="addExperience"><i class='fas fa-plus' style='font-size:30px;color:green'></i></button>
+            </div>
+          </div>
+
+          <div class="row title projects">
+            <div class="col">
+              <h3>Peojects</h3>
+            </div>
+          </div>
+          <div class="project">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="Project">Project</label>
+                  <input type="text" class="form-control" id="projectLable" name="projectLable" placeholder="projectLable">
+                </div>
+                <div class="col-md-7">
+                  <label for="projectDescription">projectDescription</label>
+                   <textarea form="cv_form" class="form-control" id="projectDescription" name="projectDescription" rows="1" placeholder="Short Project Description"></textarea>
+                </div>
+                <div class="col-md-2">
+                  <label for="projectLink">link</label>
+                   <input class="form-control" id="projectLink" name="projectLink" rows="1" placeholder="link"></input>
+                </div>
+              </div>
+          </div>
+          <div class="row addProject">
+            <div class="col">
+              <button type="submit" class="btn btn-light" id="addProject"><i class='fas fa-plus' style='font-size:30px;color:green'></i></button>
+            </div>
+          </div>
+
+          <div class="row title educations">
+            <div class="col">
+              <h3>Education</h3>
+            </div>
+          </div>
+          <div class="education">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="educationPeriod">EducationPeriod</label>
+                  <input type="text" class="form-control" id="educationPeriod" name="educationPeriod" placeholder="Education Period">
+                </div>
+                <div class="col-md-5">
+                  <label for="instituionName">Instituion Name</label>
+                  <input type="text" class="form-control" id="instituionName" name="instituionName" placeholder="Instituion Name">
+                </div>
+                <div class="col-md-4">
+                  <label for="Major">Major</label>
+                  <input type="text" class="form-control" id="major" name="major" placeholder="Major">
+                </div>
+              </div>
+          </div>
+          <div class="row addEducation">
+            <div class="col">
+              <button type="submit" class="btn btn-light" id="addEducation"><i class='fas fa-plus' style='font-size:30px;color:green'></i></button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" id="submitButton" class="btn btn-success btn-lg btn-block" value="upload" disabled>submit</button>
+          </div>
+        </form>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+let linkwrapper = $('.link');
+let add_link = $('#addLink');
+
+let languagewrapper = $('.language');
+let add_language = $('#addLanguage');
+
+let interestwrapper = $('.interest');
+let add_interest = $('#addInterest');
+
+let experiencewrapper = $('.experience');
+let add_experience = $('#addExperience');
+
+let projectwrapper = $('.project');
+let add_project = $('#addProject');
+
+let educationwrapper = $('.education');
+let add_education = $('#addEducation');
+
+$(add_link).click(function(e){
+  e.preventDefault();
+  $(linkwrapper).append('<div class="row">'+
+        '<div class="col-md-3">'+
+      '<input type="text" class="form-control" id="lable" name="linkLable" placeholder="Lable"> '+
+       '</div>'+
+        '<div class="col-md-7">'+
+          '<input type="text" class="form-control" id="link" name="link" placeholder="Link">'+
+          '</div>'+
+        '<div class="col-md-1">'+
+          '<button class="btn form-control removeLink"><i class= "fas fa-trash-alt" style= "font-size:30px;color:red"></i></button>'+
+        '</div>'+
+      '</div>');
+});
+$(linkwrapper).on('click', '.removeLink', function(e){
+  e.preventDefault();
+  $(this).parent().parent().remove();
+});
+
+$(add_language).click(function(e){
+  e.preventDefault();
+  $(languagewrapper).append('<div class="row">'+
+        '<div class="col-md-3">'+
+      '<input type="text" class="form-control" id="languageLable" name="languageLable" placeholder="Language"> '+
+       '</div>'+
+        '<div class="col-md-7">'+
+          '<input type="text" class="form-control" id="languageLevel" name="languageLevel" placeholder="Level">'+
+          '</div>'+
+        '<div class="col-md-1">'+
+          '<button class="btn form-control removeLanguage"><i class= "fas fa-trash-alt" style= "font-size:30px;color:red"></i></button>'+
+        '</div>'+
+      '</div>');
+});
+$(languagewrapper).on('click', '.removeLanguage', function(e){
+  e.preventDefault();
+  $(this).parent().parent().remove();
+});
+
+$(add_interest).click(function(e){
+  e.preventDefault();
+  $(interestwrapper).append('<div class="row">'+
+        '<div class="col-md-6">'+
+      ' <input type="text" class="form-control" id="interestLable" name="interestLable" placeholder="Interest"> '+
+       '</div>'+
+        '<div class="col-md-1">'+
+        '<button class="btn form-control removeInterest"><i class= "fas fa-trash-alt" style= "font-size:30px;color:red"></i></button>'+
+        '</div>'+
+      '</div>');
+});
+$(interestwrapper).on('click', '.removeInterest', function(e){
+  e.preventDefault();
+  $(this).parent().parent().remove();
+});
+
+$(add_experience).click(function(e){
+  e.preventDefault();
+  $(experiencewrapper).append('<div class="row">'+
+        '<div class="col-md-6">'+
+      '<input type="text" class="form-control" id="experienceLable" name="experienceLable" placeholder="experienceLable"> '+
+       '</div>'+
+        '<div class="col-md-6">'+
+          '<input type="text" class="form-control" id="experiencePeriod" name="experiencePeriod" placeholder="experiencePeriod">'+
+          '</div>'+
+          '<div class="col-md-11">'+
+             '<textarea class="form-control" id="experienceDescription" name="experienceDescription" rows="3" placeholder="experienceDescription"></textarea>'+
+          '</div>'+
+        '<div class="col-md-1 align-self-center">'+
+          '<button class="btn form-control removeExperience"><i class= "fas fa-trash-alt" style= "font-size:30px;color:red"></i></button>'+
+        '</div>'+
+      '</div>');
+});
+$(experiencewrapper).on('click', '.removeExperience', function(e){
+  e.preventDefault();
+  $(this).parent().parent().remove();
+});
+
+$(add_project).click(function(e){
+  e.preventDefault();
+  $(projectwrapper).append('<div class="row">'+
+        '<div class="col-md-2">'+
+      '<input type="text" class="form-control" id="experienceLable" name="projectLable" placeholder="experienceLable"> '+
+       '</div>'+
+          '<div class="col-md-7">'+
+             '<textarea class="form-control" id="projectDescription" name="projectDescription" rows="1" placeholder="Short Project Description"></textarea>'+
+          '</div>'+
+          '<div class="col-md-2">'+
+             '<input class="form-control" id="projectLink" name="projectLink" rows="1" placeholder="link"></input>'+
+          '</div>'+
+        '<div class="col-md-1">'+
+          '<button class="btn form-control removeProject"><i class= "fas fa-trash-alt" style= "font-size:30px;color:red"></i></button>'+
+        '</div>'+
+      '</div>');
+});
+$(projectwrapper).on('click', '.removeProject', function(e){
+  e.preventDefault();
+  $(this).parent().parent().remove();
+});
+
+$(add_education).click(function(e){
+  e.preventDefault();
+  $(educationwrapper).append('<div class="row">'+
+        '<div class="col-md-2">'+
+      '<input type="text" class="form-control" id="educationPeriod" name="educationPeriod" placeholder="Education Period"> '+
+       '</div>'+
+          '<div class="col-md-5">'+
+             '<input class="form-control" id="instituionName" name="instituionName" rows="1" placeholder="instituion Name"></input>'+
+          '</div>'+
+          '<div class="col-md-4">'+
+             '<input class="form-control" id="major" name="major" rows="1" placeholder="Major"></input>'+
+          '</div>'+
+        '<div class="col-md-1">'+
+          '<button class="btn form-control removeEducation"><i class= "fas fa-trash-alt" style= "font-size:30px;color:red"></i></button>'+
+        '</div>'+
+      '</div>');
+});
+$(educationwrapper).on('click', '.removeEducation', function(e){
+  e.preventDefault();
+  $(this).parent().parent().remove();
+});
+
+$('#profilePhoto').on('change',function(){
+  if (this.files[0].size >=60000) {
+    alert(this.files[0].size);
+  }
+  else {
+  $('#submitButton').attr('disabled', false);
+  }
+})
+
+  </script>
+
+</body>
+
+</html>

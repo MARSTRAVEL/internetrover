@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>InternetRover</title>
+  <link rel="shortcut icon" href='../pictures/icon.ico'>
+  <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Icon -->
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="css/test.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container h-100">
+        <div class="row cv-container">
+          <div class="col-md-8 main-wrapper">
+            <section class="experience">
+              <h2><i class="fas fa-briefcase" style='font-size:36px'></i>EXPERIENCES</h2>
+                <% for(let i=0; i < cvdetailes.experienceLable.length; i++) { %>
+                    <div class="d-flex flex-row">
+                      <div class="p-2"><h4><%= cvdetailes.experienceLable[i] %></h4></div>
+                      <div class="p-2 ml-auto"><p><%= cvdetailes.experiencePeriod[i] %>  </p></div>
+                    </div>
+                    <p > <%= cvdetailes.experienceDescription[i] %></p>
+                  <% } %>
+            </section>
+            <section class="projects">
+              <h2><i class="fas fa-gears" style='font-size:36px'></i>PROJECTS</h2>
+              <% for(let i=0; i < cvdetailes.projectLable.length; i++) { %>
+                <div class="d-flex flex-row">
+                  <div class="p-2">
+                    <h4>
+                    <a href="<%= cvdetailes.projectLink[i]%>">
+                      <%= cvdetailes.projectLable[i]%>
+                    </a>
+                    </h4>
+                  </div>
+                  <div class="p-2">
+                    <p>
+                        <%= cvdetailes.projectDescription[i]%>
+                    </p>
+                  </div>
+                </div>
+                <% } %>
+
+            </section>
+            <section class="education">
+              <h2><i class="fas fa-graduation-cap" style='font-size:36px'></i>EDUCATION</h2>
+
+              <% for(let i=0; i < cvdetailes.educationPeriod.length; i++) { %>
+                <div class="d-flex flex-row">
+                  <div class="p-2"><p><%= cvdetailes.educationPeriod[i]%></p></div>
+                  <div class="p-2"><p><%= cvdetailes.major[i]%> </p></div>
+                  <div class="p-2"><p><%= cvdetailes.instituionName[i]%> </p></div>
+                </div>
+                <% } %>
+            </section>
+          </div>
+          <div class="col-md-4 side-wrapper">
+            <div class="profile-container">
+              <img src="../temPictures/<%= cvdetailes.profilePhoto %>" class="img-fluid" alt="">
+              <h1 class="name"> <%= cvdetailes.firstName %> <%= cvdetailes.lastName %></h1>
+            </div>
+            <div class="contact-container">
+              <ul>
+                <li class="email">
+                  <i class='fas fa-mail-bulk'></i>
+                  <a href="mailto:yunlong.a.liu@gmail.com"><%= cvdetailes.eMail %></a>
+                </li>
+                <li class="phone">
+                  <i class='fas fa-phone'></i>
+                  <a><%= cvdetailes.phone %></a>
+                </li>
+                  <% for(let i=0; i < cvdetailes.linkLable.length; i++) { %>
+                      <li>
+                        <a href= <%= cvdetailes.link[i] %>>
+                          <%= cvdetailes.link[i] %>
+                        </a>
+                      </li>
+                    <% } %>
+              </ul>
+            </div>
+            <div class="languages-container">
+              <h2>LANGUAGES</h2>
+              <ul>
+                <% for(let i=0; i < cvdetailes.languageLable.length; i++) { %>
+                    <li>
+                        <%= cvdetailes.languageLable[i] %>--- <%= cvdetailes.languageLevel[i] %>
+                    </li>
+                  <% } %>
+              </ul>
+            </div>
+            <div class="interest-container">
+              <h2>INTERESTS</h2>
+              <ul>
+                <% for(let i=0; i < cvdetailes.interestLable.length; i++) { %>
+                    <li>
+                        <%= cvdetailes.interestLable[i] %>
+                    </li>
+                  <% } %>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>
