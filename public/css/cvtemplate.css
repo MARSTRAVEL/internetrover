@@ -1,0 +1,37 @@
+.cv-container{
+height: 100%;
+}
+ .main-wrapper{
+
+ }
+
+
+
+.side-wrapper ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-wrapper div{
+ margin-top: 10%;
+}
+
+.side-wrapper li{
+  padding-top: 3%;
+}
+
+.experience{
+  margin-top: 5%;
+}
+@media only screen and (max-width: 768px) {
+  .cv-container{
+    height: 100%;
+  }
+  .main-wrapper{
+    width: 100%;
+  }
+  .side-wrapper{
+    width: 100%;
+  }
+}
