@@ -1,3 +1,25 @@
+.generatecv_content{
+width:100%;  
+}
+
 .title{
   margin-top: 3%;
+}
+
+.side-wrapper ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-wrapper div{
+ margin-top: 10%;
+}
+
+.side-wrapper li{
+  padding-top: 3%;
+}
+
+.experience{
+  margin-top: 5%;
 }

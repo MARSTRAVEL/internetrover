@@ -98,15 +98,16 @@ return data;
 }
 exports.postcvform = function(req, res){
   const form = new formidable.IncomingForm();
-  form.uploadDir = "./public/temPictures";
-  form.keepExtensions = true;
-  form.keepFilenames = true;
+  //form.uploadDir = "./public/temPictures";
+//  form.keepExtensions = true;
+//  form.keepFilenames = true;
   form.parse(req, function(err, fields, files) {
     if (err) {
       console.log(err);
     }
     else {
       const data = processCvData(fields);
+/*
       data.profilePhoto = files.profilePhoto.name;
       fs.rename(files.profilePhoto.path, form.uploadDir + "/" + files.profilePhoto.name, function(err){
         if (err) {
@@ -114,6 +115,7 @@ exports.postcvform = function(req, res){
         }
         return;
       });
+*/
       res.render('cvtemplate', {cvdetailes: data});
     }
   });
