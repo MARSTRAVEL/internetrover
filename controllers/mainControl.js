@@ -332,9 +332,13 @@ exports.showUpdate = function(req, res){
 }
 
 exports.shownews = function(req, res){
+  if (req.session.user) {
   news.find({}).sort({date:-1}).limit(20).exec(function(err, results){
     res.render('news', {message: results});
   });
+}else {
+  res.redirect('login');
+}
 //  res.render('news', {});
   /*
   if (req.session.user) {

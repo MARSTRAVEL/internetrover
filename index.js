@@ -10,7 +10,7 @@ const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mong
 
 
 const port = process.env.PORT || 8080;
-//const localDB = 'mongodb://localhost:27017/internetRover';
+const localDB = 'mongodb://localhost:27017/internetRover';
 
 app.set('trust proxy', 1) // trust first proxy
 app.set('view engine', 'ejs');
@@ -22,7 +22,7 @@ app.use(session({
   cookie: { maxAge:1000*60*10 },
   // store current user in database and max age:...
   store: new MongoStore({
-    url: MONGOLAB_URI,
+    url: localDB,
   }),
 }));
 app.use(function(req, res, next){
@@ -33,7 +33,7 @@ app.use(function(req, res, next){
 　　next();
 });
 
-mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
+mongoose.connect(localDB, { useNewUrlParser: true});
 
 app.get('/login', mainControl.getlogin);
 app.post('/login', mainControl.postlogin);
@@ -65,6 +65,11 @@ app.get('/allContacts', mainControl.getAllContacts);
 app.get('/generatecv', function(req, res){
   res.render('generatecv');
 });
+
+app.get('/test', function(req, res){
+  res.render('test');
+});
+
 app.post('/generatecv', mainControl.postcvform);
 
 
