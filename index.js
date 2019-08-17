@@ -10,7 +10,7 @@ const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mong
 
 
 const port = process.env.PORT || 8080;
-const MONGOLAB_URI = 'mongodb://localhost:27017/internetRover';
+//const localhost = 'mongodb://localhost:27017/internetRover';
 
 app.set('trust proxy', 1) // trust first proxy
 app.set('view engine', 'ejs');
