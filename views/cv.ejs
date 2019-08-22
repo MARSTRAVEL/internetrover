@@ -10,8 +10,9 @@
 
   <title>InternetRover</title>
   <link rel="shortcut icon" href='../pictures/icon.ico'>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Icon -->
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   <!-- Custom styles for this template -->
@@ -24,48 +25,79 @@
 <body>
 
   <div class="d-flex" id="wrapper">
-
     <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container h-100">
         <div class="row cv-container">
           <div class="col-md-8 main-wrapper">
             <section class="experience">
-              <h2><i class="fas fa-briefcase" style='font-size:36px'></i>EXPERIENCES</h2>
-              <div class="d-flex flex-row Word Cloud On Map">
-                <div class="p-2"><h4>Word Cloud On Map</h4></div>
-                <div class="p-2 ml-auto"><p> 2018-present </p></div>
+              <div class="d-flex flex-row title_mainWrapper">
+                <i class="fas fa-briefcase"></i>
+                <h2>EXPERIENCES</h2>
               </div>
-              <p class="Word Cloud On Map">
-                This is my Master Thesis in University of Eastern Finland.
-                Word Cloud On Map is a great visulization component in Mopsi project to count users' data,
-                and plot Word Cloud on Google Map. My responsibility is develop the component.
-                </p>
-              <div class="d-flex flex-row InternetRover">
-                <div class="p-2"><h4>InternetRover</h4></div>
-                <div class="p-2 ml-auto"><p> 2019 - present </p></div>
+              <div class="Word Cloud On Map">
+                <div class="d-flex flex-row">
+                  <div class="p-2"><h4>Word Cloud On Map</h4></div>
+                  <div class="p-2 ml-auto"><p> 2018-present </p></div>
+                </div>
+                <div class="experience_description">
+                  <p class="Word Cloud On Map">
+                    Mopsi project is location based web game.
+                    Word Cloud On Map is my Master Thesis <br>in University of Eastern Finland;
+                    I developed the component to visualize users' comments<br> as Word Cloud in Mopsi game.
+                    The algorithm used is greedy algorithm. Hierarchical bounding boxes, quadTree are used to speed algorithm.
+                    </p>
+                </div>
               </div>
-              <p>
-                <a href="https://internetrover.herokuapp.com/index">InternetRover</a>
-                 is a web application that developed by myself to host perosnal hobbies.
-                 Backend:Express+MongoDB+Nodejs; Backend Architectture:MVC
-                 Frontend: Bootstrap+JS; Frontend Architectture:(MVC will be applied).
-               </p>
-
-              <div class="d-flex flex-row MarsTravel">
-                <div class="p-2"><h4>Founder of MarsTravel</h4></div>
-                <div class="p-2 ml-auto"><p> 2017 - 2019 </p></div>
+              <div class="InternetRover">
+                <div class="d-flex flex-row">
+                  <div class="p-2"><h4>InternetRover</h4></div>
+                  <div class="p-2 ml-auto"><p> 2019 - present </p></div>
+                </div>
+                <div class="experience_description">
+                  <p>
+                     InternetRover is a web application that developed by myself to host perosnal hobbies. It is hosted on Heroku. Backend:Express+MongoDB+Nodejs; Backend Architectture:MVC;<br>
+                     Frontend: Bootstrap+JS+css+Jquery
+                   </p>
+                </div>
               </div>
-              <p>
-                MarsTravel is IT start up to website and web application for small size entrepreneur.
-              </p>
-              <div class="d-flex flex-row TangMen">
-                <div class="p-2"><h4>Founder of TangMen Restaurtant</h4></div>
-                <div class="p-2 ml-auto"><p> 2017 - 2018 </p></div>
+              <div class="TangMen">
+                <div class="d-flex flex-row">
+                  <div class="p-2"><h4>Founder of TangMen Restaurtant</h4></div>
+                  <div class="p-2 ml-auto"><p> 2017 - 2018 </p></div>
+                </div>
+                <div class="experience_description">
+                  <p>Because of my persnal hobby, i had my own restaurtant during year of 2017&&2018. <br>I failed in the end, but i learned how important team work is to the company's grow.</p>
+                </div>
+              </div>
+              <div class="MarsTravel">
+                <div class="d-flex flex-row">
+                  <div class="p-2"><h4>Founder of MarsTravel</h4></div>
+                  <div class="p-2 ml-auto"><p> 2017 - 2019 </p></div>
+                </div>
+                <div class="experience_description">
+                  <p>MarsTravel is IT start up to develop website/application for small size company. My role is to handle paper work.
+                  </p>
+                </div>
+              </div>
+              <div class="Project-Turku">
+                <div class="d-flex flex-row">
+                  <div class="p-2"><h4>Life Before death</h4></div>
+                  <div class="p-2 ml-auto"><p> 2015</p></div>
+                </div>
+                <div class="experience_description">
+                  <p>
+                    Life Before death is a web application to help the people who is nearly dying to think positive and enjoy the current life by
+                     listening to healing music/songs, chating with people etc. The project is hosted at Game Laboratory in Turku University by one of my professor.
+                  </p>
+                </div>
               </div>
             </section>
             <section class="projects">
-              <h2><i class="fas fa-gears" style='font-size:36px'></i>PROJECTS</h2>
+              <div class="d-flex flex-row title_mainWrapper">
+                <i class="fas fa-gears" ></i>
+                <h2 >PROJECTS</h2>
+              </div>
               <div class="d-flex flex-row wordCloud on Mopsi">
                 <div class="p-2">
                   <h4>
@@ -74,8 +106,7 @@
                 </div>
                 <div class="p-2">
                   <p>
-                    A component to collect data from users
-                    and plot Word Cloud on Google Map.
+                    Component to visualize users's data as Word Cloud on Mopsi game.
                   </p>
                 </div>
               </div>
@@ -89,27 +120,44 @@
                 </div>
                 <div class="p-2">
                   <p>
-                      Web application to host personal hobbies.
+                      Web application to host personal hobbies.Currently avaliable functions are Check weather of anycity; scrape news; manage contacts; generate word cloud  
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex flex-row CvGenerator">
+                <div class="p-2">
+                  <h4>
+                  <a href="https://internetrover.herokuapp.com/generatecv">
+                    CvGenerator
+                  </a>
+                  </h4>
+                </div>
+                <div class="p-2">
+                  <p>
+                      Web application genrate CV onine. User provide personal information; <br>review in real time and download as any formats.
                   </p>
                 </div>
               </div>
               <div class="d-flex flex-row TruckSafety App">
                 <div class="p-2">
                   <h4>
-                  <a href="">
+                  <a>
                     TruckSafety
                   </a>
                   </h4>
                 </div>
                 <div class="p-2">
                   <p>
-                    Android application to detect speed and temperature of truck's tire.
+                    Android application to detect speed and temperature of truck's tire.(Not Avaliable)
                   </p>
                 </div>
               </div>
             </section>
             <section class="education">
-              <h2><i class="fas fa-graduation-cap" style='font-size:36px'></i>EDUCATION</h2>
+              <div class="d-flex flex-row title_mainWrapper">
+                <i class="fas fa-graduation-cap" ></i>
+                <h2>EDUCATION</h2>
+              </div>
               <div class="d-flex flex-row">
                 <div class="p-2"><p>2011-2013</p></div>
                 <div class="p-2"><p> Information Technology</p></div>
@@ -136,7 +184,7 @@
               <ul>
                 <li class="email">
                   <i class='fas fa-mail-bulk'></i>
-                  <a href="mailto:yunlong.a.liu@gmail.com">yunlong.a.liu@gmail.com</a>
+                  <a href="mailto:yunlong.a.liu@gmail.com" title="Click and send Email">yunlong.a.liu@gmail.com</a>
                 </li>
                 <li class="phone">
                   <i class='fas fa-phone'></i>
@@ -164,6 +212,24 @@
                 <li>English(Good)</li>
                 <li>Finnihs(Basic)</li>
               </ul>
+            </div>
+            <div class="techSkill-container">
+              <h2>PRO SKILLS</h2>
+              <div id="progress">
+                <span style="width:70%;">JavaScript</span>
+              </div>
+              <div id="progress">
+                <span style="width:50%">Express</span>
+              </div>
+              <div id="progress">
+                <span style="width:34%">Python</span>
+              </div>
+              <div id="progress">
+                <span style="width:30%">Android</span>
+              </div>
+              <div id="progress">
+                <span style="width:40%;">MongoDB</span>
+              </div>
             </div>
             <div class="interest-container">
               <h2>INTERESTS</h2>
