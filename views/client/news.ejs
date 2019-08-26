@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>InternetRover</title>
+  <link rel="shortcut icon" href='../pictures/icon.ico'>
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+          <canvas id="canvas" width="280" height="90">
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
+        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
+        <a href="/generatecv" class="list-group-item list-group-item-action bg-light">generateCv</a>
+        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle"><i class="fa fa-navicon" style="font-size:20px"></i></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                 <span class="sr-only">(current)</span>
+              <p>
+                <a href="logout">LOGOUT</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="">
+          <h1 class="mt-4">The News Page</h1>
+          <button type="button" name="button" id="scrapenews_button">
+            Scrap news today
+          </button>
+          <label>Update: </label>
+            <time id="update_time"><%= updated_date %></time>
+        </div>
+        <div class="">
+          <% for(var i=0; i < message.length; i++) { %>
+              <h3>
+                <a href= <%= message[i].link %>>
+                  <%= message[i].title %>
+                </a>
+              </h3>
+            <% } %>
+        </div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="vendor/logo.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+    $('#scrapenews_button').click(function(){
+      let date = document.getElementById("update_time").textContent;
+      date = parseInt(date);
+      //date format is: YYYYMMDD
+      const current_date = () =>{
+        const d = new Date();
+        const year = d.getFullYear().toString();
+        let month = d.getMonth();
+        month = (month+1).toString();
+        if (month.length<2) {
+          month = '0'+month;
+        }
+        let day = d.getDate().toString();
+        if (day.length<2) {
+          day = '0'+day;
+        }
+        const dateNow = parseInt(year+month+day);
+        return dateNow;
+      };
+      const dateNow = current_date();
+      if (dateNow > date) {
+        $.ajax({
+        url: "/news",
+        type: 'post',
+        data: dateNow.toString(),
+        dataType: 'text',
+       });
+      document.getElementById("update_time").textContent = dateNow;}
+    });
+  </script>
+
+</body>
+
+</html>

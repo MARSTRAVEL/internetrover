@@ -1,5 +1,5 @@
 const contact = require('../modules/contact.js');
-const users = require('../modules/users.js');
+//const users = require('../modules/users.js');
 const news = require('../modules/news.js');
 const newsUpdateRecord = require('../modules/newsUpdateRecord.js');
 const formidable = require('formidable');
@@ -14,30 +14,12 @@ const bbcUrl ='https://www.bbc.com/news';
 const reutersUrl = 'https://www.reuters.com/news/archive/worldNews';
 const yleUrl = "https://yle.fi/uutiset/osasto/news/";
 
-exports.getlogin = function(req, res){
-  req.session.user = null;
-  res.render('login');
-};
 
-exports.postlogin = function(req, res){
-  const form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    users.find({'userName': fields.userName}, function(err, result){
-      if (err) {
-        res.send('server error!');
-      }else if (result.length !== 0) {
-         req.session.user = {
-         username: fields.userName,
-         password: fields.passWord,
-        };
-        res.redirect('index');
-        return;
-      }
-      else {
-        res.redirect('login');
-      }
-    });
-    });
+exports.getindex = function(req, res){
+    res.render('client/index');
+  };
+exports.getgeneratecv = function(req, res){
+  res.render('client/generatecv');
 };
 
 const processCvData = (fields) =>{
@@ -116,9 +98,110 @@ exports.postcvform = function(req, res){
         return;
       });
 */
-      res.render('cvtemplate', {cvdetailes: data});
+      res.render('client/cvtemplate', {cvdetailes: data});
     }
   });
+};
+
+exports.getcv = function(req, res){res.render('client/cv');};
+
+exports.showWordCloud = function(req, res){
+    res.render('client/wordcloud');
+}
+
+exports.shownews = function(req, res){
+  news.find({}).sort({date:-1}).limit(20)
+  .then(results =>{
+    newsUpdateRecord.findOne().sort({date:-1}).limit(1)
+    .then((time)=>{
+      res.render('client/news',{
+        message: results,
+        updated_date:time.date
+      });
+    })
+  })
+};
+exports.postnews = function(req, res){
+  // scrapenews and save  to db
+    axios.all([axios.get(bbcUrl), axios.get(reutersUrl), axios.get(yleUrl)])
+    .then(axios.spread(function(responseBBC, responseReuters, responseYle){
+    const bbc =  scrapenews.bbcTopStory(responseBBC.data);
+    const reuters = scrapenews.reuters(responseReuters.data);
+    const yle = scrapenews.yleNews(responseYle.data);
+    const allNews = [...bbc, ...reuters, ...yle];
+    news.create(
+    allNews,
+    function(err, awesome_instance) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(' news saved!');
+      }
+    }
+  );
+    }));
+
+    req.on('data',function(data){
+  // get data(nowdate) from client and save to newsUpdateRecord db
+   		dateNow =data.toString();
+      res.render('dashboard', {date: dateNow});
+      const date = new newsUpdateRecord({
+        date: dateNow,
+      });
+
+  /*
+      newsUpdateRecord.find({date: "2019728"},function(err, result){
+        if (err) {
+          console.log(err);
+        }else {
+          console.log(result);
+        }
+      });
+  */
+    date.save(function(err){
+        if (err) {
+          console.log(err);
+        }else {
+          console.log(' time saved!');
+        }
+      });
+
+   	})
+  };
+
+exports.dashboard = function(req, res){
+    // find lastest record/date and send to client
+    newsUpdateRecord.findOne().sort({date:-1}).limit(1).exec(function(err, post){
+      console.log(post);
+      res.render('dashboard');
+    });
+  };
+
+
+exports.getlogin = function(req, res){
+  req.session.user = null;
+  res.render('login');
+};
+
+exports.postlogin = function(req, res){
+  const form = new formidable.IncomingForm();
+  form.parse(req, function(err, fields, files) {
+    users.find({'userName': fields.userName}, function(err, result){
+      if (err) {
+        res.send('server error!');
+      }else if (result.length !== 0) {
+         req.session.user = {
+         username: fields.userName,
+         password: fields.passWord,
+        };
+        res.redirect('index');
+        return;
+      }
+      else {
+        res.redirect('login');
+      }
+    });
+    });
 };
 
 exports.showsignup = function(req, res){
@@ -152,92 +235,13 @@ exports.logout = function(req, res){
 　　res.redirect('index');
 };
 
-exports.index = function(req, res){
-  if (req.session.user) {
-    res.render('index');
-  }
-  else {
-    res.redirect('login');
-  }
-};
-
-exports.dashboard = function(req, res){
-
-  if (req.session.user) {
-    // find lastest record/date and send to client
-    newsUpdateRecord.findOne({}, {}, { sort: { 'date' : -1 } }, function(err, result) {
-      res.render('dashboard', {date: result.date});
-    });
-
-  }
-  else {
-    res.redirect('login');
-  }
-};
-
-exports.dashboardNews = function(req, res){
-// scrapenews and save  to db
-  axios.all([axios.get(bbcUrl), axios.get(reutersUrl), axios.get(yleUrl)])
-  .then(axios.spread(function(responseBBC, responseReuters, responseYle){
-  const bbc =  scrapenews.bbcTopStory(responseBBC.data);
-  const reuters = scrapenews.reuters(responseReuters.data);
-  const yle = scrapenews.yleNews(responseYle.data);
-  const allNews = [...bbc, ...reuters, ...yle];
-  news.create(
-  allNews,
-  function(err, awesome_instance) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('saved!');
-    }
-  }
-);
-  }));
-
-  req.on('data',function(data){
-// get data(nowdate) from client and save to newsUpdateRecord db
- 		dateNow =data.toString();
-res.render('dashboard', {date: dateNow});
-    const date = new newsUpdateRecord({
-      date: dateNow,
-    });
-
-/*
-    newsUpdateRecord.find({date: "2019728"},function(err, result){
-      if (err) {
-        console.log(err);
-      }else {
-        console.log(result);
-      }
-    });
-*/
-  date.save(function(err){
-      if (err) {
-        console.log(err);
-      }else {
-        console.log('saved!');
-      }
-    });
-
- 	})
-};
 
 exports.showContact = function(req, res){
-  if (req.session.user){
   res.render('contact', {});
-  }
-  else {
-    res.redirect('login');
-  }
-}
+};
 
 exports.showAddContact = function(req, res){
-  if (req.session.user) {
     res.render('addcontact', {});
-  }else {
-    res.redirect('login');
-  }
 };
 
 exports.addNewContact = function(req, res){
@@ -331,31 +335,17 @@ exports.showUpdate = function(req, res){
   });
 }
 
-exports.shownews = function(req, res){
-  if (req.session.user) {
-  news.find({}).sort({date:-1}).limit(20).exec(function(err, results){
-    res.render('news', {message: results});
-  });
-}else {
-  res.redirect('login');
-}
-//  res.render('news', {});
-  /*
-  if (req.session.user) {
-    axios.all([axios.get(bbcUrl), axios.get(reutersUrl), axios.get(yleUrl)])
-    .then(axios.spread(function(responseBBC, responseReuters, responseYle){
-    const bbc =  scrapenews.bbcTopStory(responseBBC.data);
-    const reuters = scrapenews.reuters(responseReuters.data);
-    const yle = scrapenews.yleNews(responseYle.data);
-    const allNews = [...bbc, ...reuters, ...yle];
-    res.render('news', {message: allNews});
-    }));
-  }else {
-    res.redirect('login');
-  }
-  */
-};
 
-exports.showWordCloud = function(req, res){
-    res.render('wordcloud');
+exports.postwordcloud  = function(req, res){
+  const form = new formidable.IncomingForm();
+  form.parse(req, function(err, fields, files) {
+    console.log(fields);
+  });
 }
+
+exports.newpost = function(req, res){
+  const form = new formidable.IncomingForm();
+  form.parse(req, function(err, fields, files) {
+    console.log(fields);
+  });
+};

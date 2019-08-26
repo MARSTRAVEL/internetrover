@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
-const mainControl = require('./controllers/mainControl.js');
+//const mainControl = require('./controllers/mainControl.js');
 const mongoose = require('mongoose');
 const se = require('./modules/contact.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const formidable = require('formidable');
-const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
+const adminrouters = require('./routers/adminrouters.js');
+const clientrouters = require('./routers/clientrouters.js');
 
+const MONGOLAB_URI = "mongodb+srv://yunlong:longlovesuomi810@cluster0-m2asn.mongodb.net/internetrover?retryWrites=true&w=majority";
 
 const port = process.env.PORT || 8080;
 //const localhost = 'mongodb://localhost:27017/internetRover';
@@ -35,43 +37,8 @@ app.use(function(req, res, next){
 
 mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
 
-app.get('/login', mainControl.getlogin);
-app.post('/login', mainControl.postlogin);
-
-app.get('/signup', mainControl.showsignup);
-app.post('/signup', mainControl.postsignup);
-
-app.get('/logout', mainControl.logout);
-app.get('/index', mainControl.index);
-
-app.get('/dashboard', mainControl.dashboard);
-app.post('/dashboard/news', mainControl.dashboardNews);
-
-// visit /news >> scrape >> show news; later on( first time visit /news >> scrape >> save to db >> show news)
-app.get('/news', mainControl.shownews);
-app.get('/wordcloud', mainControl.showWordCloud);
-app.get('/cv', function(req, res){res.render('cv');});
-
-app.get('/contact', mainControl.showContact);  //show contact section
-app.get('/addContact', mainControl.showAddContact); // show addContact form
-app.post('/addNewContact', mainControl.addNewContact); // ajax send form to server and save form
-// app.propfind('/:firstName', mainControl.validate); // ajax check firstName exit or not // app.propfind() check properties
-app.delete('/contact/:firstName',   mainControl.deletecontact); // /: means receives parameteres
-app.get('/contact/:firstName', mainControl.showUpdate);// show motified contact
-app.post('/contact/:firstName',     mainControl.updateContact);
-app.get('/allContacts', mainControl.getAllContacts);
-
-
-app.get('/generatecv', function(req, res){
-  res.render('generatecv');
-});
-
-app.get('/test', function(req, res){
-  res.render('test');
-});
-
-app.post('/generatecv', mainControl.postcvform);
-
+app.use('/admin', adminrouters);
+app.use('/', clientrouters);
 
 app.use(express.static('public'));
 
