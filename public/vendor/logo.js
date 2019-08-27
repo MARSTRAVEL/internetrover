@@ -46,4 +46,10 @@ const draw_R =() =>{
   }
 
 };
+
+const redirectToIndex = () =>{
+  location.replace("https://internetrover.herokuapp.com/");
+};
+document.getElementById("logo").addEventListener("click", redirectToIndex);
+
 draw_R();

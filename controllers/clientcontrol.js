@@ -169,13 +169,7 @@ exports.postnews = function(req, res){
    	})
   };
 
-exports.dashboard = function(req, res){
-    // find lastest record/date and send to client
-    newsUpdateRecord.findOne().sort({date:-1}).limit(1).exec(function(err, post){
-      console.log(post);
-      res.render('dashboard');
-    });
-  };
+exports.dashboard = function(req, res){res.render('client/dashboard');};
 exports.showContact = function(req, res){
     res.render('client/contact', {});
   };
