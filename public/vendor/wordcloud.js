@@ -106,6 +106,7 @@ const inputWordList = [
 */
 ];
 
+
 // changed wordFontSize
 const wordFontSize = (inputWords) => {
   let multiplier;
@@ -136,10 +137,10 @@ const randomRgba = () => `rgba(${[randomByte(), randomByte(), randomByte(), 1].j
 // create canvas for getting pixcel of each word, doesnt show this canvas
 // text.length = 12, fontSize 55 otherwise out of box
 const canvasGetPixcel = document.createElement('canvas');
-document.body.appendChild(canvasGetPixcel);
+//document.body.appendChild(canvasGetPixcel);
 canvasGetPixcel.width = wordWidthOfBvh;
 canvasGetPixcel.height = wordHeightOfBvh;
-canvasGetPixcel.style.border = '1px solid red';
+//canvasGetPixcel.style.border = '0px none black;';
 const c = canvasGetPixcel.getContext('2d');
 
 // Bounding Volume Hierarchy Tree constructor

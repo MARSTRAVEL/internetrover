@@ -41,7 +41,6 @@ const draw_R =() =>{
   if (x>220) {
     ctx.clearRect(0, 0, 280,90);
     ctx.fillText("R", 220 ,80);
-    console.log("running");
     draw();
     window.cancelAnimationFrame(ani_1);
   }

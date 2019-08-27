@@ -82,7 +82,6 @@ $(add_language).click(function(e){
       });
 
       $('.generatecv_language').on('change', "#"+ id2[0].id, function(){
-        console.log('chnaging!!');
        if ($('#cv_language').find("#"+ id1[0].id).length==0) {
 
          $('#cv_language').append('<li id='+id1[0].id +'>'+ $("#"+ id1[0].id).val() + '(' + $(this).val() + ')'+

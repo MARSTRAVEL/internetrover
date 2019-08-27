@@ -25,7 +25,7 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">
+      <div class="sidebar-heading" id="logo">
           <canvas id="canvas" width="280" height="90">
       </div>
       <div class="list-group list-group-flush">
@@ -36,7 +36,6 @@
         <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
       </div>
     </div>
-    <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -60,22 +59,33 @@
       </nav>
 
       <div class="container-fluid">
-        <div class="">
-          <h1 class="mt-4">The News Page</h1>
-          <button type="button" name="button" id="scrapenews_button">
-            Scrap news today
-          </button>
-          <label>Update: </label>
-            <time id="update_time"><%= updated_date %></time>
+        <div class="row">
+          <div class="col-4 align-self-center">
+            <h1 class="mt-4">Hot News Today</h1>
+          </div>
+          <div class="col-3 align-self-end">
+            <button type="button" name="button" id="scrapenews_button">
+              UpdateNews
+            </button>
+            <label>Update: </label>
+              <time id="update_time"><%= updated_date %></time>
+          </div>
         </div>
-        <div class="">
-          <% for(var i=0; i < message.length; i++) { %>
-              <h3>
-                <a href= <%= message[i].link %>>
-                  <%= message[i].title %>
-                </a>
-              </h3>
-            <% } %>
+        <div class="row">
+          <div class="news_container col">
+            <% for(var i=0; i < message.length; i++) { %>
+              <ul>
+                <li>
+                    <a href= <%= message[i].link %> target="ifram_news">
+                      <%= message[i].title %>
+                    </a>
+                </li>
+              </ul>
+              <% } %>
+          </div>
+          <div class="col">
+            <iframe height="100%" width="100%" src="" name="ifram_news"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -90,12 +100,12 @@
   <script type="text/javascript" src="vendor/logo.js"></script>
   <!-- Menu Toggle Script -->
   <script>
-    $("#menu-toggle").click(function(e) {
+$("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
 
-    $('#scrapenews_button').click(function(){
+$('#scrapenews_button').click(function(){
       let date = document.getElementById("update_time").textContent;
       date = parseInt(date);
       //date format is: YYYYMMDD
@@ -123,7 +133,14 @@
         dataType: 'text',
        });
       document.getElementById("update_time").textContent = dateNow;}
-    });
+});
+
+const redirectToIndex = () =>{
+  location.replace("https://https://internetrover.herokuapp.com/");
+};
+
+document.getElementById("logo").addEventListener("click", redirectToIndex);
+
   </script>
 
 </body>

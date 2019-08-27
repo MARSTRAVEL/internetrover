@@ -176,6 +176,99 @@ exports.dashboard = function(req, res){
       res.render('dashboard');
     });
   };
+exports.showContact = function(req, res){
+    res.render('client/contact', {});
+  };
+exports.showAddContact = function(req, res){
+      res.render('client/addcontact', {});
+  };
+exports.addNewContact = function(req, res){
+    const form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+         contact.addContact(fields, function(result){
+           res.json({ 'result': result });
+         });
+      });
+  }
+  /*
+  // user make propfind request to check firstName exit or not
+  exports.validate = function(req, res){
+    const firstName = req.params.firstName;
+    console.log(req.params.firstName);
+    contact.checkFirstName(firstName, function(trueOrFalse){
+      res.json({'result': trueOrFalse});
+    });
+  }
+  */
+  // Ajax api to update contacts
+exports.updateContact = function(req, res){
+    const firstName = req.params.firstName;
+  // the form that server received from client
+    const form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+      contact.find({'firstName': firstName}, function(err, results){
+        if (results.length === 0) {
+          res.send('-1');
+          return;
+        }
+        const updateContact = results[0];
+        updateContact.lastName = fields.lastName;
+        updateContact.nationality = fields.nationality;
+        updateContact.description = fields.description;
+        updateContact.gender = fields.gender;
+
+        updateContact.save(function(err){
+          if (err) {
+            res.json({'result': -1});
+          }
+          else {
+            res.json({'result': 1});
+          }
+        });
+      });
+
+    });
+  }
+exports.deletecontact = function(req, res){
+    const firstName = req.params.firstName;
+    // same as contact.checkFirstName() // static mathod
+    contact.find({'firstName': firstName}, function(err, results){
+      if (err || results.length === 0) {
+        res.json({'result': -1});
+        return;
+      }
+
+      results[0].remove(function(err){
+        if (err) {
+          res.json({'result': -1});
+          return;
+        }
+      });
+      res.json({'result': 1});
+    });
+
+  }
+// ajax api
+exports.getAllContacts = function(req, res){
+    const page = url.parse(req.url, true).query.url || 0;
+    //limit(100) show 100 contacts at each time
+    contact.find({}).limit(100).skip(2 * page).exec(function(err, results){
+      res.json({'results': results});
+    });
+  }
+exports.showUpdate = function(req, res){
+    const firstName = req.params.firstName;
+    // same as contact.checkFirstName() // static mathod
+    contact.find({'firstName': firstName}, function(err, results){
+      if (results.length === 0) {
+        res.send('Does not exit!')
+        return;
+      }
+      res.render('client/updateContact',{
+        info: results[0]
+      });
+    });
+  }
 
 
 exports.getlogin = function(req, res){
@@ -234,107 +327,6 @@ exports.logout = function(req, res){
 　　req.session.error = null;
 　　res.redirect('index');
 };
-
-
-exports.showContact = function(req, res){
-  res.render('contact', {});
-};
-
-exports.showAddContact = function(req, res){
-    res.render('addcontact', {});
-};
-
-exports.addNewContact = function(req, res){
-  const form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-       contact.addContact(fields, function(result){
-         res.json({ 'result': result });
-       });
-    });
-}
-/*
-// user make propfind request to check firstName exit or not
-exports.validate = function(req, res){
-  const firstName = req.params.firstName;
-  console.log(req.params.firstName);
-  contact.checkFirstName(firstName, function(trueOrFalse){
-    res.json({'result': trueOrFalse});
-  });
-}
-*/
-// Ajax api to update contacts
-exports.updateContact = function(req, res){
-  const firstName = req.params.firstName;
-// the form that server received from client
-  const form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    contact.find({'firstName': firstName}, function(err, results){
-      if (results.length === 0) {
-        res.send('-1');
-        return;
-      }
-      const updateContact = results[0];
-      updateContact.lastName = fields.lastName;
-      updateContact.nationality = fields.nationality;
-      updateContact.description = fields.description;
-      updateContact.gender = fields.gender;
-
-      updateContact.save(function(err){
-        if (err) {
-          res.json({'result': -1});
-        }
-        else {
-          res.json({'result': 1});
-        }
-      });
-    });
-
-  });
-}
-
-exports.deletecontact = function(req, res){
-  const firstName = req.params.firstName;
-  // same as contact.checkFirstName() // static mathod
-  contact.find({'firstName': firstName}, function(err, results){
-    if (err || results.length === 0) {
-      res.json({'result': -1});
-      return;
-    }
-
-    results[0].remove(function(err){
-      if (err) {
-        res.json({'result': -1});
-        return;
-      }
-    });
-    res.json({'result': 1});
-  });
-
-}
-
-// ajax api
-exports.getAllContacts = function(req, res){
-  const page = url.parse(req.url, true).query.url || 0;
-  //limit(100) show 100 contacts at each time
-  contact.find({}).limit(100).skip(2 * page).exec(function(err, results){
-    res.json({'results': results});
-  });
-}
-
-exports.showUpdate = function(req, res){
-  const firstName = req.params.firstName;
-  // same as contact.checkFirstName() // static mathod
-  contact.find({'firstName': firstName}, function(err, results){
-    if (results.length === 0) {
-      res.send('Does not exit!')
-      return;
-    }
-    res.render('updateContact',{
-      info: results[0]
-    });
-  });
-}
-
 
 exports.postwordcloud  = function(req, res){
   const form = new formidable.IncomingForm();
