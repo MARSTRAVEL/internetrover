@@ -1,3 +1,4 @@
+
 let logo_canvas = document.getElementById("canvas");
 let ctx = logo_canvas.getContext("2d");
 let fontSize = 60;
