@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
+<!-- API KEY O8A62I5REWNAM36I-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -17,7 +16,6 @@
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="css/weather.css">
-  <link rel="stylesheet" href="css/news.css">
 
 </head>
 
@@ -53,10 +51,6 @@
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                  <span class="sr-only">(current)</span>
-              <p>
-
-                <a href="logout">LOGOUT</a>
-              </p>
             </li>
           </ul>
         </div>
@@ -93,8 +87,13 @@
             </main>
           </div>
         </div>
-        <div class="row air_quality_china">
+        <div class="row" style="margin-top:10%">
+          <div class="stock col-9">
+            <canvas id="linechart_canvas" width="800px" height="400px"></canvas>
+          </div>
+          <div class="col-3">
 
+          </div>
         </div>
       </div>
     </div>
@@ -107,6 +106,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="../vendor/logo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
   $("#menu-toggle").click(function(e) {
@@ -114,7 +114,7 @@
       $("#wrapper").toggleClass("toggled");
     });
 
-  const weather = (url) => {
+const weather = (url) => {
     // Create the XHR request
     const request = new XMLHttpRequest();
     // Return a new promise.
@@ -141,7 +141,7 @@
       request.send();
     });
   };
-  $('#current_weather').click(function(){
+$('#current_weather').click(function(){
     const openWeatherAPIKey = 'be4f63ffaad56d681f19dba18437e57e';
     const city = document.getElementById('search_city').value;
     let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid="+openWeatherAPIKey;
@@ -175,6 +175,57 @@
         alert('Please Type correct city, for Example: beijing');
     });
     });
+
+let url_symbol;
+let url_interval;
+const apiKey = 'O8A62I5REWNAM36I';
+let url_function;
+let data_lable=[];
+let data_close = [];
+let lable_counter= 0;
+let data_counter = 0;
+fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=60min&outputsize=full&apikey=O8A62I5REWNAM36I')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+   for (const [key, value] of Object.entries(myJson['Time Series (60min)'])) {
+     lable_counter += 1;
+     data_counter += 1;
+     if (lable_counter % 40 == 0) {
+       data_lable.push(key);
+       data_close.push(value['4. close'])
+     }
+  }
+
+  var data = {
+        labels: data_lable,
+        datasets: [
+            {
+                label: "This is lable",
+                fill:false,
+                lineTension: 0,
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: data_close
+            }
+        ]
+    };
+    var options = {
+      title: {
+      display: true,
+      text: 'Stock'
+    }
+  };
+    var linechartCanvas = document.getElementById("linechart_canvas").getContext("2d");
+
+    var lineChart = new Chart(linechartCanvas).Line(data, options);
+}
+);
   </script>
 
 </body>
