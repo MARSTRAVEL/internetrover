@@ -88,8 +88,8 @@
           </div>
         </div>
         <div class="row" style="margin-top:10%">
-          <div class="stock col-9">
-            <canvas id="linechart_canvas" width="800px" height="400px"></canvas>
+          <div class="stock col-9" style="height:100%">
+            <canvas id="linechart_canvas" height="400px" ></canvas>
           </div>
           <div class="col-3">
 
@@ -106,7 +106,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="../vendor/logo.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <!-- Menu Toggle Script -->
   <script>
   $("#menu-toggle").click(function(e) {
@@ -176,6 +176,7 @@ $('#current_weather').click(function(){
     });
     });
 
+
 let url_symbol;
 let url_interval;
 const apiKey = 'O8A62I5REWNAM36I';
@@ -184,6 +185,8 @@ let data_lable=[];
 let data_close = [];
 let lable_counter= 0;
 let data_counter = 0;
+
+
 fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=60min&outputsize=full&apikey=O8A62I5REWNAM36I')
   .then(function(response) {
     return response.json();
@@ -192,40 +195,42 @@ fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MS
    for (const [key, value] of Object.entries(myJson['Time Series (60min)'])) {
      lable_counter += 1;
      data_counter += 1;
-     if (lable_counter % 40 == 0) {
+     if (lable_counter % 10 == 0) {
        data_lable.push(key);
        data_close.push(value['4. close'])
-     }
-  }
-
+     }}
   var data = {
-        labels: data_lable,
-        datasets: [
-            {
-                label: "This is lable",
-                fill:false,
-                lineTension: 0,
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: data_close
-            }
-        ]
-    };
-    var options = {
-      title: {
-      display: true,
-      text: 'Stock'
+    labels: data_lable,
+    datasets: [{
+      label: "MSFT",
+      fill:false,
+      lineTension: 0,
+      fillColor: "rgba(220,220,220,0.2)",
+      strokeColor: "rgba(220,220,220,1)",
+      pointColor: "rgba(220,220,220,1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(220,220,220,1)",
+      data: data_close
     }
-  };
-    var linechartCanvas = document.getElementById("linechart_canvas").getContext("2d");
+  ]};
+  var options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    title: {
+    display: true,
+    text: "MSFT-Day",
+  }};
+  var linechartCanvas = document.getElementById("linechart_canvas").getContext("2d");
+  var lineChart = new Chart(linechartCanvas, {
+    type: 'line',
+    data: data,
+    options: options
 
-    var lineChart = new Chart(linechartCanvas).Line(data, options);
+  });
 }
 );
+
   </script>
 
 </body>
