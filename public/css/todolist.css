@@ -1,0 +1,60 @@
+.header{
+height:30%;
+}
+.container_todolist{
+  background-color:#eee; 
+  height:300px;
+}
+.todolist li {
+  position: relative;
+  font-size: 18px;
+  transition: 0.2s;
+  border: solid;
+  border-color: rgb(255, 117, 26);
+  margin-top: 2px;
+  background-color: rgb(255, 117, 26);
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.doinglist li {
+  position: relative;
+  font-size: 18px;
+  transition: 0.2s;
+  border: solid;
+  border-color: rgb(179, 179, 255);
+  margin-top: 2px;
+  background-color: rgb(179, 179, 255);
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.donelist li {
+  position: relative;
+  font-size: 18px;
+  transition: 0.2s;
+  border: solid;
+  border-color: rgb(46, 184, 46);
+  margin-top: 2px;
+  background-color: rgb(46, 184, 46);
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ul li:hover {
+  background: rgb(26, 140, 255);
+}
+.todolist {
+  margin: 0;
+  padding: 0;
+  height: 100px;
+  list-style-type: none;
+  overflow-y: auto;
+}
