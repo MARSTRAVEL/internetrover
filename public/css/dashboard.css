@@ -1,0 +1,21 @@
+.info{
+  border-style: outset;
+  border-color: green;
+  height: 40px;
+}
+.dashboard_row{
+  border-style: groove;
+  border-color: rgb(0, 0, 255, 0.5);
+  margin-top: 5%;
+}
+
+#time_series{
+  height: 200px;
+  margin-top:25%;
+}
+.timeSerie{
+  width: 100%;
+}
+.timeSerie:hover{
+  	background-color: #00FFFF;
+}

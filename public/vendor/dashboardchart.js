@@ -20,11 +20,12 @@ const config = {
       label: "MSFT",
       fill:false,
       lineTension: 0,
+      borderColor: "#0000FF",
       strokeColor: "rgba(220,220,220,1)",
       pointColor: "rgba(220,220,220,1)",
       pointStrokeColor: "#fff",
       pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(220,220,220,1)",
+      pointHighlightStroke: "rgba(220,220,220,0.5)",
       data: data_close
     }
   ]},
@@ -40,16 +41,6 @@ const config = {
 };
 const linechartCanvas = document.getElementById("linechart_canvas").getContext("2d");
 const lineChart = new Chart(linechartCanvas, config);
-
-document.getElementById("daily").addEventListener("click", function(){
-  text = 'daily';
-  stock(url_daily, str_daily);
-});
-document.getElementById("interval").addEventListener("click", function(){
-  text = 'interval';
-  stock(url_interval, str_interval);
-});
-
 const stock = async(url, str) =>{
   try {
     let response = await fetch(url);
@@ -74,3 +65,12 @@ const stock = async(url, str) =>{
     lineChart.update();
   }
 };
+
+document.getElementById("daily").addEventListener("click", function(){
+  text = 'daily';
+  stock(url_daily, str_daily);
+});
+document.getElementById("interval").addEventListener("click", function(){
+  text = 'interval';
+  stock(url_interval, str_interval);
+});

@@ -16,6 +16,7 @@
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
@@ -56,7 +57,7 @@
         </div>
       </nav>
 
-      <div class="container-fluid" style="background-color:white;">
+      <div class="container-fluid">
         <div class="row">
           <div class="container_weather col-lg-3 col-md-3 col-sm-12 col-xs-12" id ="weather">
             <header class="header">
@@ -87,16 +88,16 @@
             </main>
           </div>
         </div>
-        <div class="row">
-          <div class="stock col-9" style="height:100%">
+        <div class="row dashboard_row">
+          <div class="stock col-9">
             <canvas id="linechart_canvas" height="400px" ></canvas>
           </div>
-          <div class="col-1">
-            <div class="d-flex align-items-start flex-column" style="height: 200px;">
-              <div class="p-2"><a class="btn" id="interval" role="button">Interval_60Min</a></div>
-              <div class="p-2"><a class="btn daily" id="daily" role="button">Daily</a></div>
-              <div class="p-2"><a class="btn weekly">Weekly</a></div>
-              <div class="p-2"><a class="btn monthly">Monthly</a></div>
+          <div class="col-2">
+            <div class="d-flex align-items-start flex-column" id="time_series">
+              <div class="p-2 timeSerie"><a class="btn" id="interval" role="button">60Min</a></div>
+              <div class="p-2 timeSerie"><a class="btn daily" id="daily" role="button">Daily</a></div>
+              <div class="p-2 timeSerie"><a class="btn weekly">Weekly</a></div>
+              <div class="p-2 timeSerie"><a class="btn monthly">Monthly</a></div>
           </div>
         </div>
       </div>
