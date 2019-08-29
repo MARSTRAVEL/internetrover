@@ -169,16 +169,20 @@ function newElement() {
   document.getElementById("myInput").value = "";
 }
 
-$(function() {
-    $( "#todo" ).sortable({
-        connectWith: ".connectedSortable"
+$( function() {
+    $( "#todo, #doing" ).sortable({
+      connectWith: ".connectedSortable"
     }).disableSelection();
+  } );
 
-    $( "#doing" ).sortable({
-        connectWith: ".connectedSortable",
-    }).disableSelection();
-
-    $("#done").sortable({
-      connectWith: ".connectedSortable",
+$( function() {
+  $( "#todo, #done" ).sortable({
+    connectWith: ".connectedSortable"
   }).disableSelection();
-});
+} );
+
+$( function() {
+  $( "#done, #doing" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+} );

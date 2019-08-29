@@ -2,10 +2,10 @@
 height:30%;
 }
 .container_todolist{
-  background-color:#eee; 
+  background-color:#eee;
   height:300px;
 }
-.todolist li {
+#todo li {
   position: relative;
   font-size: 18px;
   transition: 0.2s;
@@ -18,12 +18,14 @@ height:30%;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
-.doinglist li {
+#doing li {
   position: relative;
   font-size: 18px;
   transition: 0.2s;
   border: solid;
+  list-style-type: none;
   border-color: rgb(179, 179, 255);
   margin-top: 2px;
   background-color: rgb(179, 179, 255);
@@ -34,7 +36,7 @@ height:30%;
   user-select: none;
 }
 
-.donelist li {
+#done li {
   position: relative;
   font-size: 18px;
   transition: 0.2s;
@@ -48,9 +50,11 @@ height:30%;
   -ms-user-select: none;
   user-select: none;
 }
+
 ul li:hover {
   background: rgb(26, 140, 255);
 }
+
 .todolist {
   margin: 0;
   padding: 0;
