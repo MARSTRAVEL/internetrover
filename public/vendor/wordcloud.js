@@ -308,7 +308,7 @@ inputWordList = str;
 }else {
   inputWordList = [
     { normal: 'OOOPS', count: '400' },
-    { normal: 'Something Wrong', count: '200' },
+    { normal: 'Wrong', count: '200' },
     { normal: 'Something', count: '200' },
   ]
 }
