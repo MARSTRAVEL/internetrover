@@ -302,7 +302,16 @@ pFCanvas.clearRect(0, 0, playingFieldCanvas.width, playingFieldCanvas.height);
 const text = document.getElementById('textarea').value;
 let doc = nlp(text);
 let str = doc.match('#Verb').out('frequency');
+
+if (str.length !== 0) {
 inputWordList = str;
+}else {
+  inputWordList = [
+    { normal: 'OOOPS', count: '400' },
+    { normal: 'Something Wrong', count: '200' },
+    { normal: 'Something', count: '200' },
+  ]
+}
 const newWordList = wordFontSize(inputWordList);
 const wordsListForDraw = newWordList.map(word => (
   {
