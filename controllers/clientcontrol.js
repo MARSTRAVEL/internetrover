@@ -107,7 +107,7 @@ exports.getcv = function(req, res){res.render('client/cv');};
 
 exports.showWordCloud = function(req, res){
     res.render('client/wordcloud');
-}
+};
 
 exports.shownews = function(req, res){
   news.find({}).sort({date:-1}).limit(20)
@@ -264,6 +264,9 @@ exports.showUpdate = function(req, res){
     });
   }
 
+exports.about = function(req, res){
+  res.render('client/about');
+};
 
 exports.getlogin = function(req, res){
   req.session.user = null;
@@ -320,18 +323,4 @@ exports.logout = function(req, res){
 　　req.session.user = null;
 　　req.session.error = null;
 　　res.redirect('index');
-};
-
-exports.postwordcloud  = function(req, res){
-  const form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    console.log(fields);
-  });
-}
-
-exports.newpost = function(req, res){
-  const form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    console.log(fields);
-  });
 };
