@@ -2,12 +2,10 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>InternetRover</title>
   <link rel="shortcut icon" href='../pictures/icon.ico'>
   <!-- Bootstrap core CSS -->
@@ -16,7 +14,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -49,16 +46,18 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                 <span class="sr-only">(current)</span>
-              <p>
-              //  <a>Welcome, </a>
-                <a href="logout">LOGOUT</a>
-              </p>
-            </li>
-          </ul>
-        </div>
+<!--
+<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+<li class="nav-item active">
+     <span class="sr-only">(current)</span>
+  <p>
+  //  <a>Welcome, </a>
+    <a href="logout">LOGOUT</a>
+  </p>
+</li>
+</ul>
+
+-->        </div>
       </nav>
 
       <div class="container-fluid">
@@ -67,22 +66,20 @@
           <div class="can">
             <canvas id = 'playingFieldCanvas' width="600" height="600" style="border:1px solid #d3d3d3;margin-left:30%;margin-right:30%;"></canvas>
           </div>
-          <div class="form" style="">
-            <form action="/wordcloud" method="post">
-              <textarea name="body" cols="60" rows="10"></textarea>
-            </form>
+          <div  style="margin-left:10%">
+              <textarea name="texts" cols="120" rows="5"id="textarea"></textarea>
+              <button type="button" id="generateButton" onclick="generateWordCloud()">Generate</button>
           </div>
         </div>
       </div>
     </div>
-    <!-- /#page-content-wrapper -->
-
   </div>
-  <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- compromise -->
+  <script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
   <script type="text/javascript" src="../vendor/wordcloud.js"></script>
   <script type="text/javascript" src="vendor/logo.js"></script>
   <!-- Menu Toggle Script -->

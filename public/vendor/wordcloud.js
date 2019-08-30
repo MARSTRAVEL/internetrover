@@ -3,115 +3,19 @@ const MinBoxSize = 2; // minimun box size
 const fontFamily = 'sans-serif'; // font style
 const wordWidthOfBvh = 350;
 const wordHeightOfBvh = 300;
-const maxFontSize = 55;
+const maxFontSize = 60;
 const minFontSize = 10;
-const inputWordList = [
-  { keyword: 'Interesting', weight: '100' },
-  { keyword: 'Finland', weight: '200' },
-  { keyword: 'China', weight: '2' },
-  { keyword: 'Russia', weight: '2' },
-  { keyword: 'Korea', weight: '2' },
-  { keyword: 'So', weight: '2' },
-  { keyword: 'Many', weight: '2' },
-  { keyword: 'Countries', weight: '2' },
-  { keyword: 'He', weight: '200' },
-  { keyword: 'Will', weight: '150' },
-  { keyword: 'Visit', weight: '100' },
-  { keyword: 'all', weight: '90' },
-  { keyword: 'Well', weight: '80' },
-  { keyword: 'Maybe', weight: '70' },
-  { keyword: 'He', weight: '60' },
-  { keyword: 'I', weight: '50' },
-  { keyword: 'LOVE', weight: '40' },
-  { keyword: 'YOU', weight: '45' },
-  { keyword: 'BABY', weight: '30' },
-  /*
-  { keyword: 'Really', weight: '20' },
-  { keyword: 'Tell', weight: '15' },
-  { keyword: 'Mel', weight: '2' },
-  { keyword: 'Something', weight: '1' },
-  { keyword: 'traveling', weight: '2' },
-  { keyword: 'interesting', weight: '100' },
-  { keyword: 'finland', weight: '800' },
-  { keyword: 'china', weight: '700' },
-  { keyword: 'russia', weight: '600' },
-  { keyword: 'korea', weight: '500' },
-  { keyword: 'so', weight: '400' },
-  { keyword: 'many', weight: '300' },
-  { keyword: 'country', weight: '200' },
-  { keyword: 'he', weight: '200' },
-  { keyword: 'will', weight: '150' },
-  { keyword: 'visit', weight: '100' },
-  { keyword: 'all', weight: '90' },
-  { keyword: 'well', weight: '80' },
-  { keyword: 'maybe', weight: '70' },
-  { keyword: 'he', weight: '60' },
-  { keyword: 'I', weight: '50' },
-  { keyword: 'LOVE', weight: '40' },
-  { keyword: 'YOU', weight: '45' },
-  { keyword: 'BABY', weight: '30' },
-  { keyword: 'really', weight: '20' },
-  { keyword: 'tell', weight: '15' },
-  { keyword: 'mel', weight: '15' },
-  { keyword: 'something', weight: '10' },
-  { keyword: 'traveling', weight: '2' },
-  { keyword: 'interesting', weight: '1000' },
-  { keyword: 'finland', weight: '800' },
-  { keyword: 'china', weight: '700' },
-  { keyword: 'russia', weight: '600' },
-  { keyword: 'korea', weight: '500' },
-  { keyword: 'so', weight: '400' },
-  { keyword: 'many', weight: '300' },
-  { keyword: 'country', weight: '200' },
-  { keyword: 'he', weight: '200' },
-  { keyword: 'will', weight: '150' },
-  { keyword: 'visit', weight: '100' },
-  { keyword: 'all', weight: '90' },
-  { keyword: 'well', weight: '80' },
-  { keyword: 'maybe', weight: '70' },
-  { keyword: 'he', weight: '60' },
-  { keyword: 'I', weight: '50' },
-  { keyword: 'LOVE', weight: '45' },
-  { keyword: 'YOU', weight: '45' },
-  { keyword: 'BABY', weight: '30' },
-  { keyword: 'really', weight: '20' },
-  { keyword: 'tell', weight: '15' },
-  { keyword: 'mel', weight: '15' },
-  { keyword: 'something', weight: '10' },
-  { keyword: 'traveling', weight: '2' },
-  { keyword: 'interesting', weight: '1000' },
-  { keyword: 'finland', weight: '800' },
-  { keyword: 'china', weight: '700' },
-  { keyword: 'russia', weight: '600' },
-  { keyword: 'korea', weight: '500' },
-  { keyword: 'so', weight: '400' },
-  { keyword: 'many', weight: '300' },
-  { keyword: 'country', weight: '200' },
-  { keyword: 'he', weight: '200' },
-  { keyword: 'will', weight: '150' },
-  { keyword: 'visit', weight: '100' },
-  { keyword: 'all', weight: '90' },
-  { keyword: 'well', weight: '80' },
-  { keyword: 'maybe', weight: '70' },
-  { keyword: 'he', weight: '60' },
-  { keyword: 'I', weight: '8000' },
-  { keyword: 'LOVE', weight: '8000' },
-  { keyword: 'YOU', weight: '9000' },
-  { keyword: 'BABY', weight: '30' },
-  { keyword: 'really', weight: '20' },
-  { keyword: 'tell', weight: '10' },
-  { keyword: 'listen', weight: '15' },
-  { keyword: 'something', weight: '5' },
-  { keyword: 'traveling', weight: '2' },
-*/
+/*const inputWordList = [
+  { normal: 'Interesting', count: '100' },
+  { normal: 'Finland', count: '200' },
 ];
-
-
+*/
+let inputWordList;
 // changed wordFontSize
 const wordFontSize = (inputWords) => {
   let multiplier;
-  const maxAppearWord = Math.max(...inputWords.map(o => o.weight));
-  const minAppearWord = Math.min(...inputWords.map(o => o.weight));
+  const maxAppearWord = Math.max(...inputWords.map(o => o.count));
+  const minAppearWord = Math.min(...inputWords.map(o => o.count));
   if (maxAppearWord === minAppearWord) {
     multiplier = 0;
   } else {
@@ -119,17 +23,17 @@ const wordFontSize = (inputWords) => {
   }
   for (let item in inputWords) {
     if (inputWords.hasOwnProperty(item)) {
-      if (inputWords[item].weight <= 1) {
+      if (inputWords[item].count <= 1) {
         inputWords[item].fontSize = minFontSize;
       } else {
-        inputWords[item].fontSize = Math.round(Math.log(inputWords[item].weight) / Math.log(maxAppearWord)
+        inputWords[item].fontSize = Math.round(Math.log(inputWords[item].count) / Math.log(maxAppearWord)
         * multiplier + minFontSize);
       }
     }
   }
   return inputWords;
 };
-const newWordList = wordFontSize(inputWordList);
+
 const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const randomByte = () => randomNumber(0, 255)
 const randomRgba = () => `rgba(${[randomByte(), randomByte(), randomByte(), 1].join(',')})`
@@ -264,18 +168,6 @@ const initializeBvhTree = (text, wordfontS, rotateDegree) => {
   );
 };
 
-const wordsListForDraw = newWordList.map(word => (
-  {
-    word: word.keyword,
-    bvhTree: initializeBvhTree(word.keyword, word.fontSize),
-    rotatebvhTree: initializeBvhTree(word.keyword, word.fontSize, 90),
-    rotate: false,
-    // initize drawPosition wihin square 100x100 Math.floor(Math.random() * (max - min)) + min;
-    drawPosition: [Math.floor(Math.random() * 100) + 250, Math.floor(Math.random() * 100) + 250],
-    drawFont: word.fontSize,
-  //  wordWidthHeight: getWordPixel(word.keyword, word.fontSize).textWidthHeight,
-  }
-));
 
 // two trees overlapTest
 const twoBoundingBoxesIntersect = (subTreeA, subTreeB, positionA, positionB) => {
@@ -402,7 +294,28 @@ const drawInputwords = (pFCanvas, wordsList) => {
   }
 };
 
-const words = findDrawPosition(wordsListForDraw);
 const playingFieldCanvas = document.getElementById('playingFieldCanvas');
 const pFCanvas = playingFieldCanvas.getContext('2d');
+
+const generateWordCloud = () =>{
+pFCanvas.clearRect(0, 0, playingFieldCanvas.width, playingFieldCanvas.height);
+const text = document.getElementById('textarea').value;
+let doc = nlp(text);
+let str = doc.match('#Verb').out('frequency');
+inputWordList = str;
+const newWordList = wordFontSize(inputWordList);
+const wordsListForDraw = newWordList.map(word => (
+  {
+    word: word.normal,
+    bvhTree: initializeBvhTree(word.normal, word.fontSize),
+    rotatebvhTree: initializeBvhTree(word.normal, word.fontSize, 90),
+    rotate: false,
+    // initize drawPosition wihin square 100x100 Math.floor(Math.random() * (max - min)) + min;
+    drawPosition: [Math.floor(Math.random() * 100) + 250, Math.floor(Math.random() * 100) + 250],
+    drawFont: word.fontSize,
+  //  wordWidthHeight: getWordPixel(word.normal, word.fontSize).textWidthHeight,
+  }
+));
+const words = findDrawPosition(wordsListForDraw);
 drawInputwords(pFCanvas, words);
+};
