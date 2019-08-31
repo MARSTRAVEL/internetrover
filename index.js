@@ -43,12 +43,12 @@ app.use(express.static('public'));
 
 // Route not found (404)
 app.use(function(req, res, next) {
-   res.status(404).send({ message: '404' });
+   res.status(404).render('404');
 });
 // 500 - Any server error
 app.use(function (err, req, res, next) {
   console.error(err.stack)
-  res.status(500).send('Something broke!')
+  res.status(500).send('Something broke!Please contact admin@ yunlong.a.liu@gmail.com')
 });
 
 app.listen(port);
