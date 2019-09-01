@@ -76,7 +76,6 @@ let data_lable=[];
 let data_close = [];
 let lable_counter= 0;
 let data_counter = 0;
-let text = '';
 
 const config = {
   type: 'line',
@@ -101,7 +100,7 @@ const config = {
     maintainAspectRatio: false,
     title: {
     display: true,
-    text: text,
+    text: 'Please select Time Series',
   }
   }
 };
@@ -134,23 +133,19 @@ const stock = async(url, str, title_text) =>{
 };
 
 document.getElementById("interval").addEventListener("click", function(){
-  text = 'interval';
-  stock(url_interval, str_interval, text);
+  stock(url_interval, str_interval, str_interval);
 });
 
 document.getElementById("daily").addEventListener("click", function(){
-  text = 'daily';
-  stock(url_daily, str_daily, text);
+  stock(url_daily, str_daily, str_daily);
 });
 
 document.getElementById("weekly").addEventListener("click", function(){
-  text = 'weekly';
-  stock(url_weekly, str_weekly, text);
+  stock(url_weekly, str_weekly, str_weekly);
 });
 
 document.getElementById("monthly").addEventListener("click", function(){
-  text = 'interval';
-  stock(url_monthly, str_monthly, text);
+  stock(url_monthly, str_monthly, str_monthly);
 });
 
 // toDoList
