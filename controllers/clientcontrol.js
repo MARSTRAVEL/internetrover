@@ -1,5 +1,5 @@
 const contact = require('../modules/contact.js');
-//const users = require('../modules/users.js');
+const users = require('../modules/users.js');
 const news = require('../modules/news.js');
 const newsUpdateRecord = require('../modules/newsUpdateRecord.js');
 const formidable = require('formidable');
@@ -16,8 +16,9 @@ const yleUrl = "https://yle.fi/uutiset/osasto/news/";
 
 
 exports.getindex = function(req, res){
-    res.render('client/index');
+    res.cookie('name', 100,{maxAge: 10000, httpOnly:false}).render('client/index');
   };
+
 exports.getgeneratecv = function(req, res){
   res.render('client/generatecv');
 };
@@ -268,6 +269,7 @@ exports.about = function(req, res){
   res.render('client/about');
 };
 
+/*
 exports.getlogin = function(req, res){
   req.session.user = null;
   res.render('login');
@@ -324,3 +326,4 @@ exports.logout = function(req, res){
 　　req.session.error = null;
 　　res.redirect('index');
 };
+*/

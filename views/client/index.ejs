@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="The intetnetRover Project@marstravel.fi">
   <meta name="author" content="Yunlong Liu">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InternetRover</title>
   <link rel="shortcut icon" href='../pictures/icon.ico'>
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icon -->
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
 </head>
 
 <body>
-
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
@@ -42,13 +42,49 @@
         <button class="btn btn-primary" id="menu-toggle">
           <i class="fa fa-navicon" style="font-size:20px"></i>
         </button>
-      </nav>
 
+      </nav>
       <div id ="indexPic" style="text-align: center">
         <img src="pictures/juliaset.jpg" alt="">
       </div>
-      <div class="" style="text-align: center">
+      <div style="text-align: center">
         <canvas id="typingcanvas"></canvas>
+      </div>
+      <div class="d-flex flex-row justify-content-center">
+          <div class="p-2 zoom zoom1" id="zoom1">
+            <div class="hiddenText">
+              <img src="" id="gao">
+            </div>
+          </div>
+          <div class="p-2 zoom zoom2" >
+            <div class="hiddenText">
+              <img src="pictures/gao/gao2.JPG" alt="" id="gao">
+            </div>
+          </div>
+          <div class="p-2 zoom zoom3" >
+            <div class="hiddenText">
+              <img src="pictures/gao/gao3.JPG" alt="" id="gao">
+            </div>
+          </div>
+          <div class="p-2 zoom zoom4">
+            <div class="hiddenText">
+              <img src="pictures/gao/gao4.JPG" alt="" id="gao">
+            </div>
+          </div>
+          <div class="p-2 zoom zoom5">
+            <div class="hiddenText">
+              <img src="pictures/gao/gao5.JPG" alt="" id="gao">
+            </div>
+          </div>
+          <div class="p-2 zoom zoom6">
+            <div class="hiddenText">
+                <img src="" alt="" id="gao">
+            </div>
+          </div>
+
+        </div>
+      <div class="" style="height: 500px; width:1000px">
+
       </div>
   </div>
   <!-- Bootstrap core JavaScript -->
@@ -62,6 +98,14 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+
+    document.getElementById("zoom1").addEventListener("click", function(){
+      console.log('clicked!');
+      let audio = new Audio('audio/short_song.mp3');
+      audio.play();
+    });
+
   </script>
 </body>
 

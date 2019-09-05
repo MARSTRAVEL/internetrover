@@ -1,0 +1,54 @@
+@media only screen and (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+#gao{
+  width: 100%;
+}
+.zoom {
+  padding: 20px;
+  transition: transform 1s;
+  width: 100px;
+  height: 200px;
+}
+.hiddenText{
+  display: none;
+}
+.zoom:hover {
+  height:300px;
+  width: 300px;
+  margin-top: -30px;
+  transform: scale(1.5);
+}
+.zoom:hover .hiddenText{
+  display: block;
+  height:200px;
+  width: 300px;
+  margin-top: -30px;
+  transform: scale(1);
+}
+
+.zoom1 {
+  background-color: red;
+}
+
+.zoom2{
+    background-color: green;
+}
+
+.zoom3{
+    background-color: blue;
+}
+
+.zoom4{
+    background-color: purple;
+}
+.zoom5{
+    background-color: Aqua ;
+}
+
+.zoom6{
+    background-color: DarkOrange;
+}

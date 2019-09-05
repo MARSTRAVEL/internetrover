@@ -32,6 +32,9 @@ body {
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
+#sidebar_menue a{
+  background-color: green;
+}
 
 @media (min-width: 768px) {
   #sidebar-wrapper {

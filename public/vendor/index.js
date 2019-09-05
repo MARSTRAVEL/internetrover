@@ -11,19 +11,26 @@ const drawtext = (wordStr, xPos, yPos) =>{
 };
 
 const typingWord = () =>{
+  let gapBetweenWord = 0.05;
+  let startDrawPosition  =0.3;
+
+  if (window.innerWidth<=600) {
+    gapBetweenWord = 0.13;
+    startDrawPosition =0.01;
+  }
+
   const stringArr = ['Hi,', 'You', 'Are', 'Here.', 'Welcome!'];
   let i=0;
-  let t = 0.3;
   let timer = setInterval(function(){
       typing.font = "30px Arial";
-      typing.fillText(stringArr[i], window.innerWidth*t, 50);
-      t += 0.05;
+      typing.fillText(stringArr[i], window.innerWidth*startDrawPosition, 50);
+      startDrawPosition += gapBetweenWord;
       i += 1;
       if (i>=5) {
         clearInterval(timer);
         return;
       }
 
-    }, 500);
+    }, 300);
 };
 typingWord();

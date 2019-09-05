@@ -13,9 +13,9 @@ function draw(){
   ctx.font = fontSize+"pt Arial ";
   ctx.fillText("R", 10,80);
   ctx.fillText("O", 60,80);
-  ctx.fillText("V", 120,80);
-  ctx.fillText("E", 170,80);
-
+  ctx.fillText("V", 110,80);
+  ctx.fillText("E", 160,80);
+  ctx.fillText("R", 220,80);
   if (alpha>1){
     fontSize = 60;
     alpha = 1;
@@ -39,9 +39,9 @@ const draw_R =() =>{
   //fontSize -= 1;
   alpha_r += 0.02;
   x += 5;
-  if (x>220) {
+  if (x>280) {
     ctx.clearRect(0, 0, 280,90);
-    ctx.fillText("R", 220 ,80);
+  //  ctx.fillText("R", 160 ,80);
     draw();
     window.cancelAnimationFrame(ani_1);
   }
