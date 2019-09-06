@@ -11,20 +11,23 @@ function draw(){
   ani_2 = window.requestAnimationFrame(draw, logo_canvas);
   ctx.fillStyle = `rgba(20, 138, 50, ${alpha})`;
   ctx.font = fontSize+"pt Arial ";
-  ctx.fillText("R", 10,80);
-  ctx.fillText("O", 60,80);
-  ctx.fillText("V", 110,80);
-  ctx.fillText("E", 160,80);
-  ctx.fillText("R", 220,80);
-  if (alpha>1){
+
+  ctx.fillText("O", 55,80);
+  ctx.fillText("V", 120,80);
+  ctx.fillText("E", 170,80);
+//  ctx.fillText("R", 220,80);
+  if (alpha < 0.3){
+
     fontSize = 60;
     alpha = 1;
-      window.cancelAnimationFrame(ani_2);
+    ctx.fillStyle = `rgba(20, 138, 50, 1)`;
+    ctx.font = 60+"pt Arial ";
+    ctx.fillText("R", 0,80);
+    window.cancelAnimationFrame(ani_2);
     //ctx.clearRect(0, 0, 280,90);
   }
     fontSize -= 0.5;
     alpha -= 0.025;
-
 };
 
 
@@ -41,7 +44,7 @@ const draw_R =() =>{
   x += 5;
   if (x>280) {
     ctx.clearRect(0, 0, 280,90);
-  //  ctx.fillText("R", 160 ,80);
+    ctx.fillText("R", 220 ,80);
     draw();
     window.cancelAnimationFrame(ani_1);
   }

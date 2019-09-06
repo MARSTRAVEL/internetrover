@@ -4,9 +4,7 @@
     height: auto;
   }
 }
-#gao{
-  width: 100%;
-}
+
 .zoom {
   padding: 20px;
   transition: transform 1s;
@@ -16,18 +14,19 @@
 .hiddenText{
   display: none;
 }
+
 .zoom:hover {
-  height:300px;
+  height:400px;
   width: 300px;
   margin-top: -30px;
   transform: scale(1.5);
 }
 .zoom:hover .hiddenText{
   display: block;
-  height:200px;
-  width: 300px;
-  margin-top: -30px;
-  transform: scale(1);
+  height:100%;
+  margin-top: -33%;
+  margin-left: -40%;
+  transform: scale(0.38);
 }
 
 .zoom1 {
