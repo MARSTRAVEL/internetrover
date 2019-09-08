@@ -1,6 +1,7 @@
 const contact = require('../modules/contact.js');
 const users = require('../modules/users.js');
 const news = require('../modules/news.js');
+const Postblog = require('../modules/blog.js');
 const newsUpdateRecord = require('../modules/newsUpdateRecord.js');
 const formidable = require('formidable');
 const url = require('url');
@@ -172,10 +173,10 @@ exports.postnews = function(req, res){
 
 exports.dashboard = function(req, res){res.render('client/dashboard');};
 exports.showContact = function(req, res){
-    res.render('client/contact', {});
+    res.render('client/contact/contact', {});
   };
 exports.showAddContact = function(req, res){
-      res.render('client/addcontact', {});
+      res.render('client/contact/addcontact', {});
   };
 exports.addNewContact = function(req, res){
     const form = new formidable.IncomingForm();
@@ -259,11 +260,21 @@ exports.showUpdate = function(req, res){
         res.send('Does not exit!')
         return;
       }
-      res.render('client/updateContact',{
+      res.render('client/contact/updateContact',{
         info: results[0]
       });
     });
   }
+
+exports.blog = async(req, res) => {
+  const posts = await Postblog.find({});
+  res.render('client/blog/blog', {posts});
+};
+
+exports.showsinglepost = async(req, res) => {
+  const posts = await Postblog.findById(req.params.id);
+  res.render('client/blog/signlepost', {posts});
+};
 
 exports.about = function(req, res){
   res.render('client/about');

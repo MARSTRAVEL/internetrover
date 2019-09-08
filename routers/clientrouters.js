@@ -25,5 +25,8 @@ router.get('/contact/:firstName', clientcontrol.showUpdate);// show motified con
 router.post('/contact/:firstName', clientcontrol.updateContact);
 router.get('/allContacts', clientcontrol.getAllContacts);
 
+router.get('/blog', clientcontrol.blog);
+router.get('/blog/:id', clientcontrol.showsinglepost);
+
 router.get('/about', clientcontrol.about);
 module.exports = router;
