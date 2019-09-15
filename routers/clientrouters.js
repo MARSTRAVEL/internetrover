@@ -27,6 +27,8 @@ router.get('/allContacts', clientcontrol.getAllContacts);
 
 router.get('/blog', clientcontrol.blog);
 router.get('/blog/:id', clientcontrol.showsinglepost);
+router.get('/writeblog', clientcontrol.writeblog);
+router.post('/storepost', clientcontrol.storepost);
 
 router.get('/about', clientcontrol.about);
 module.exports = router;

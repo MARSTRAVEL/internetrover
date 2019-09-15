@@ -88,8 +88,6 @@ exports.yleNews = (html) => {
     });
 return results;
 };
-
-
 /*
 // single axios request
 axios.get(bbcUrl)

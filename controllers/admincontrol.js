@@ -29,20 +29,3 @@ exports.getpages = function(req, res){
     res.redirect('/admin');
   }
 };
-
-
-
-exports.writeblog = function(req, res){
-  res.render('admin/writeblog');
-};
-
-exports.storepost = (req, res) => {
-  const form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields){
-    fields.date = new Date().toLocaleString();
-    Postblog.create(fields, function (err, awesome_instance) {
-      if (err) console.log(err);
-      res.redirect('/admin/blog');
-    });
-  });
-};

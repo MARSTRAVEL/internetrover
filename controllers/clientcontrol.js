@@ -276,6 +276,23 @@ exports.showsinglepost = async(req, res) => {
   res.render('client/blog/signlepost', {posts});
 };
 
+exports.writeblog = function(req, res){
+  res.render('client/blog/writeblog');
+};
+
+exports.storepost = (req, res) => {
+  const form = new formidable.IncomingForm();
+  form.parse(req, function(err, fields){
+    fields.date = new Date().toLocaleString();
+    Postblog.create(fields, function (err, awesome_instance) {
+      if (err) console.log(err);
+      console.log('saved!');
+      res.redirect('/blog');
+    });
+  });
+};
+
+
 exports.about = function(req, res){
   res.render('client/about');
 };

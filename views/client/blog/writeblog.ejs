@@ -16,7 +16,6 @@
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
-  <link href="css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -43,49 +42,60 @@
         <button class="btn btn-primary" id="menu-toggle">
           <i class="fa fa-navicon" style="font-size:20px"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a href="/writeblog" class="btn" role="button">NewPost</a>
-            </li>
-          </ul>
-        </div>
       </nav>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-3 col-md-4 mx-auto blog-title">
-            <% for(let i=0; i < posts.length; i++) { %>
-              <div class="post-preview">
-                <a href="/blog/<%= posts[i]._id%>" target="iframe_post">
-                  <h4 cl-moz-selectionass="post-title"><b><%= posts[i].title %></b></h4>
-                  <h6 class="post-subtitle"><%= posts[i].description %></h6>
-                </a>
-                <p class="post-meta">Posted by
-                  <a ><%= posts[i].writer %></a>
-                  on <%= posts[i].date %>
-                </p>
-              </div>
-              <hr>
-              <% } %>
-          </div>
-          <div class="col-lg-9 col-md-8 mx-auto blog-detail" style="height: 100vh">
-            <iframe src="" width="100%" height="100%" name="iframe_post"></iframe>
+      <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container-fluid">
+            <div >
+                <form action="/storepost" method="POST" style="text-align: center;width:100%;margin-left:0;margin-top:10%">
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <input class="form-control" type="text" name="title" size="12" placeholder="Post Title">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <input class="form-control" type="text" name="writer" placeholder="Writer"><br>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <input class="form-control" type="text" name="tag" placeholder="Tag New Post"><br>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Description">
+                  </div>
+                  <div class="form-group">
+                    <div class="btn-group" role="group" aria-label="Basic example" style="width:100%">
+                      <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          HtmlTag
+                        </button>
+                        <div class="dropdown-menu" id="htmltag" >
+                        <ul>
+                          <li class="dropdown-item" value="<h1></h1>">h1</li>
+                          <li class="dropdown-item" value="<h2></h2>">h2</li>
+                          <li class="dropdown-item" value="<h3></h3>">h3</li>
+                          <li class="dropdown-item" value="<h4></h4>">h4</li>
+                        </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="from-group">
+                    <textarea id="contenttextarea"type="text" class="form-control" name="content" cols="120" rows="20"></textarea>
+                  </div>
+                  <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
           </div>
         </div>
+
       </div>
+
   </div>
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="../vendor/logo.js"></script>
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-
-  </script>
+  <script type="text/javascript" src="../vendor/writeblog.js"></script>
 </body>
 
 </html>
