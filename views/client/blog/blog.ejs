@@ -53,12 +53,15 @@
       </nav>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-3 col-md-4 mx-auto blog-title">
+          <div class="col-lg-9 col-md-8 col-9 mx-auto blog-detail" id="showblog">
+            <iframe src="" width="100%" height="100%" name="iframe_post"></iframe>
+          </div>
+          <div class="col-lg-3 col-md-4 col-3 mx-auto blog-title" id="showpost" >
             <% for(let i=0; i < posts.length; i++) { %>
               <div class="post-preview">
                 <a href="/blog/<%= posts[i]._id%>" target="iframe_post">
-                  <h4 cl-moz-selectionass="post-title"><b><%= posts[i].title %></b></h4>
-                  <h6 class="post-subtitle"><%= posts[i].description %></h6>
+                  <p cl-moz-selectionass="post-title" class="posttitle"><b><%= posts[i].title %></b></p>
+                  <p class="post-subtitle"><%= posts[i].description %></p>
                 </a>
                 <p class="post-meta">Posted by
                   <a ><%= posts[i].writer %></a>
@@ -67,9 +70,6 @@
               </div>
               <hr>
               <% } %>
-          </div>
-          <div class="col-lg-9 col-md-8 mx-auto blog-detail" style="height: 100vh">
-            <iframe src="" width="100%" height="100%" name="iframe_post"></iframe>
           </div>
         </div>
       </div>

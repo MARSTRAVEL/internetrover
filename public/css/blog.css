@@ -6,6 +6,12 @@
   height:100vh;
 }
 
+#showblog{
+  height: 100vh;
+}
+#showpost{
+  height: 100vh;
+}
 .blog-title{
   height:100%;
   overflow-y: scroll;
@@ -13,6 +19,12 @@
 .blog-detail{
   height:100%;
   overflow-y: scroll;
+}
+.posttitle{
+  font-size: 20px;
+}
+.post-subtitle{
+  font-size: 15px;
 }
 p {
   line-height: 1;
@@ -86,8 +98,21 @@ a {
   -ms-overflow-style: none !important;
 }
 
-@media only screen and (min-width: 768px) {
-  .post-preview > a > .post-title {
-    font-size: 36px;
-  }
+@media only screen and (max-width: 768px) {
+
+#showblog{
+  height: 100vh;
+}
+.posttitle{
+  font-size: 15px;
+}
+.post-subtitle{
+  font-size: 10px;
+}
+.post-preview > .post-meta {
+  font-size: 10px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96;
+}
 }
