@@ -43,7 +43,8 @@ exports.logout = function(req, res){
 exports.postlogin = function(req, res){
   const form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    if (fields.userName === "yunlong"&& fields.passWord ==="yunlong") {
+    console.log(fields.userName.toLowerCase());
+    if (fields.userName.toLowerCase() === "yunlong"&& fields.passWord ==="yunlong") {
       req.session.user = {
       username: fields.userName,
       password: fields.passWord,

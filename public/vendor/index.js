@@ -42,7 +42,6 @@ const imagecontext = image_canvas.getContext('2d');
   const img=new Image();
   img.src = "pictures/juliaset.jpg";
   img.onload = function () {
-    console.log('i am running!');
     canvas.drawImage(img, 0, 0);
   };
 };
