@@ -17,7 +17,8 @@ const yleUrl = "https://yle.fi/uutiset/osasto/news/";
 
 
 exports.getindex = function(req, res){
-    res.cookie('name', 100,{maxAge: 10000, httpOnly:false}).render('client/index');
+  res.setHeader('Cache-Control', 'public, max-age=3000');
+  res.render('client/index');
   };
 
 exports.getgeneratecv = function(req, res){
@@ -171,7 +172,10 @@ exports.postnews = function(req, res){
    	})
   };
 
-exports.dashboard = function(req, res){res.render('client/dashboard');};
+exports.dashboard = function(req, res){
+  res.render('client/dashboard');
+};
+
 exports.showContact = function(req, res){
     res.render('client/contact/contact', {});
   };
@@ -286,7 +290,6 @@ exports.storepost = (req, res) => {
     fields.date = new Date().toLocaleString();
     Postblog.create(fields, function (err, awesome_instance) {
       if (err) console.log(err);
-      console.log('saved!');
       res.redirect('/blog');
     });
   });

@@ -63,8 +63,8 @@ $('#current_weather').click(function(){
 
 
 // stock
-const url_interval = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=60min&outputsize=full&apikey=O8A62I5REWNAM36I'
-const url_daily = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&outputsize=full&apikey=O8A62I5REWNAM36I';
+const url_interval = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=60min&outputsize=compact&apikey=O8A62I5REWNAM36I'
+const url_daily = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&outputsize=compact&apikey=O8A62I5REWNAM36I';
 const url_weekly ='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=O8A62I5REWNAM36I';
 const url_monthly = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=MSFT&apikey=O8A62I5REWNAM36I';
 
@@ -113,7 +113,7 @@ const stock = async(url, str, title_text) =>{
     for (const [key, value] of Object.entries(result[str])) {
       lable_counter += 1;
       data_counter += 1;
-      if (lable_counter % 50 == 0) {
+      if (lable_counter % 30 == 0) {
         data_lable.push(key);
         data_close.push(value['4. close'])
       }}

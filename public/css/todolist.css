@@ -61,7 +61,7 @@ ul li:hover {
 .todolist {
   margin: 0;
   padding: 0;
-  height: 100px;
+  height: 174px;
   list-style-type: none;
   overflow-y: auto;
 }
