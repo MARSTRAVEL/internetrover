@@ -35,6 +35,11 @@ exports.getlogin = function(req, res){
     res.render('admin/login');
 };
 
+exports.logout = function(req, res){
+  req.session.user = null;
+  req.session.error = null;
+  res.redirect('/admin/login');
+};
 exports.postlogin = function(req, res){
   const form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
