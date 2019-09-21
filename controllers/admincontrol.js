@@ -57,10 +57,15 @@ exports.postlogin = function(req, res){
     });
 };
 
+
 exports.getpages = function(req, res){
   if (req.session.user) {
     res.render('admin/pages');
   }else {
     res.redirect('/admin');
   }
+};
+
+exports.xiaogaogao = function(req, res){
+  res.render('admin/xiaogaogao');
 };
