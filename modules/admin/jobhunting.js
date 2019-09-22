@@ -7,6 +7,7 @@ const jobhuntingSchema = new mongoose.Schema({
   'cv': String,
   'coverLetter': String,
   'date': String,
+  'interview': { type: Boolean, default: false},
   'result': String,
   'link':String,
 });

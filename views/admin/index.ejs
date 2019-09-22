@@ -2,12 +2,10 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>InternetRover</title>
   <link rel="shortcut icon" href='../pictures/icon.ico'>
   <!-- Bootstrap core CSS -->
@@ -44,6 +42,7 @@
                       <th>Company</th>
                       <th>Position</th>
                       <th>Date</th>
+                      <th>Interview</th>
                       <th>Result</th>
                     </tr>
                   </thead>
@@ -58,6 +57,7 @@
                         <td><%= jobs[i].companyName%></td>
                         <td><a href="<%= jobs[i].link%>"><%= jobs[i].position%></a></td>
                         <td><%= jobs[i].date%></td>
+                        <td><%= jobs[i].interview%></td>
                         <td><%= jobs[i].result%></td>
                       </tr>
                       <% } %>

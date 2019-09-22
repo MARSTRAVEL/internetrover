@@ -8,7 +8,7 @@ exports.adminindex = async(req, res) =>{
     const jobs = await jobhunting.find().sort({_id:-1});
     res.render('admin/index', {jobs});
   }else {
-    res.redirect('admin/login');
+    res.redirect('/admin/login');
   }
 };
 
@@ -16,7 +16,7 @@ exports.jobhunting = function(req, res){
   if (req.session.user) {
   res.render('admin/jobhunting');
 }else {
-    res.redirect('admin/login');
+    res.redirect('/admin/login');
 }
 };
 
@@ -43,7 +43,6 @@ exports.logout = function(req, res){
 exports.postlogin = function(req, res){
   const form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    console.log(fields.userName.toLowerCase());
     if (fields.userName.toLowerCase() === "yunlong"&& fields.passWord ==="yunlong") {
       req.session.user = {
       username: fields.userName,
@@ -68,4 +67,8 @@ exports.getpages = function(req, res){
 
 exports.xiaogaogao = function(req, res){
   res.render('admin/xiaogaogao');
+};
+
+exports.idp = function(req, res){
+  res.render('admin/idp');
 };
