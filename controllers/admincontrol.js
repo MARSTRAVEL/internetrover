@@ -4,12 +4,8 @@ const Postblog = require('../modules/blog.js');
 const jobhunting = require('../modules/admin/jobhunting.js');
 
 exports.adminindex = async(req, res) =>{
-  if (req.session.user) {
     const jobs = await jobhunting.find().sort({_id:-1});
     res.render('admin/index', {jobs});
-  }else {
-    res.redirect('/admin/login');
-  }
 };
 
 exports.jobhunting = function(req, res){
