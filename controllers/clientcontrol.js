@@ -20,6 +20,13 @@ exports.getindex = function(req, res){
   res.setHeader('Cache-Control', 'public, max-age=3000');
   res.render('client/index');
   };
+exports.blobuzzer = function(req, res){
+  res.render('gb/globuzzerLandingPage.html');
+}
+exports.thesis = function(req, res){
+  res.setHeader('Cache-Control', 'public, max-age=3000');
+  res.render('client/thesis');
+  };
 
 exports.getgeneratecv = function(req, res){
   res.render('client/generatecv');
