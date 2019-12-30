@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="The intetnetRover Project@marstravel.fi">
+  <meta name="author" content="Yunlong Liu">
+
+  <title>InternetRover</title>
+  <link rel="shortcut icon" href='../pictures/icon.ico'>
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading" id="logo">
+        <canvas id="canvas" width="280" height="90"></canvas>
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
+        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
+        <a href="/generatecv" class="list-group-item list-group-item-action bg-light">generateCv</a>
+        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
+        <a href="/blog" class="list-group-item list-group-item-action bg-light">Blog</a>
+        <a href="/about" class="list-group-item list-group-item-action bg-light">About</a>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">
+          <i class="fa fa-navicon" style="font-size:20px"></i>
+        </button>
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">Welcome visit my personal hobby project</h1>
+        <p>The project has both backend and frontend developemnt.The project focus on functional developemnt at the begining, UI design will be improved in following work.</br>
+          Backend: Nodejs+Express+MongoDb; Frontend: Bootstrap+JS+Jquery
+        </p>
+        <h3>The projects contain 5 parts for now </h3>
+        <div class="" >
+          <h4>1: Dashboard @Play with API</h4>
+          <p>Dashboard is the place to play with API, mini application will be puut there.</p>
+        </div>
+        <div class="">
+          <h4>2: Contact@interact with database</h4>
+          <p>Contact is a application to store contacts. Focus on interact with MongoDb. The application can be changed to another app like student management app, Tolist etc.</p>
+
+        </div>
+        <h4>3: News@scrape web</h4>
+        <p>This part is web scraping. motivation is to grape the target data from web. </p>
+        <h4>4: Generatecv@data flow in DOM</h4>
+        <p>Generatecv allow you to provide fixed iformation and live review, download ad PDF.</br>
+          provided information does not store in database. Motivation is to pratace data flow insie DOM.
+        </p>
+        <h4>5: WordCloud@visualize</h4>
+        <p>WordCloud is the algorithm that i designed to visualize texts.  The main problem the algorithm try to solve is collision detecttion.</p>
+      </div>
+    </div>
+  </div>
+  <footer style="background-color: blue">
+    <div class="d-flex justify-content-center">
+      POEREDBY: <a href="http://marstravel.fi/">marsTravel</a>
+    </div>
+  </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../vendor/logo.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+
+</html>
