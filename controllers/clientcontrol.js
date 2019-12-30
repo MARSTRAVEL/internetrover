@@ -21,7 +21,7 @@ exports.getindex = function(req, res){
   res.render('client/index');
   };
 exports.blobuzzer = function(req, res){
-  res.render('gb/globuzzerLandingPage.ejs');
+  res.render('client/gb/globuzzerLandingPage.ejs');
 }
 exports.thesis = function(req, res){
   res.setHeader('Cache-Control', 'public, max-age=3000');
