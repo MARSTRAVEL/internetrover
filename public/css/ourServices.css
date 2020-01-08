@@ -303,6 +303,7 @@ li{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 .our-plans-title{
   font-family: Montserrat;
