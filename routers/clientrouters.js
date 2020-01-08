@@ -3,7 +3,8 @@ const router = express.Router()
 const clientcontrol = require('../controllers/clientcontrol.js');
 
 router.get('/',clientcontrol.getindex);
-
+router.get('/thesis',clientcontrol.thesis);
+router.get('/service',clientcontrol.service);
 router.get('/generatecv', clientcontrol.getgeneratecv);
 router.post('/generatecv', clientcontrol.postcvform);
 
