@@ -40,6 +40,13 @@ li{
   width: 100%;
   overflow-x: hidden;
 }
+.header{
+  position: relative;
+  height: 76vh;
+  min-height: auto;
+  overflow: hidden;
+  max-height: 950px;
+}
 
 .side-menu-mobile{
   display: none;
@@ -86,15 +93,15 @@ li{
 }
 
 .navBar{
-  width: 90%;
+  width: calc(100% - 86px);
+  width: -webkit-calc(100% - 86px);
+  left: 43px;
+  padding-top: 25px;
+  padding-bottom: 22px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 43px;
-  margin-right: 43px;
-  padding-top: 33px;
-  padding-bottom: 23px;
   border-bottom: 1px solid white;
   position: fixed;
   z-index: 10;
@@ -176,14 +183,6 @@ li{
   }
 }
 
-.header{
-  position: relative;
-  width: 100%;
-  height: 76vh;
-  min-height: auto;
-  overflow: hidden;
-  max-height: 950px;
-}
 .backgroundImage{
   position: absolute;
   background-attachment: fixed;
@@ -191,7 +190,7 @@ li{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(https://s3-alpha-sig.figma.com/img/f4d4/923c/0cb0f0337711495488f410ecce49a28d?Expires=1578268800&Signature=MuW-bEcvK4i8Tj3xxldxcJVdADgJ8VnWzLa3c1ykoSSo39Te4f9iah8V2Ne-HZ6VHlLXmTXCRdHJ58WIl3YBRLykVR7XfCBTMHgB4J8-acoh0VD-J-2rAtfenohGW0LxiU6XUtsD3SxiyzqNZcPDgRenB4ekrdig4TDw37zN12-D6SuqeeEmyn~jvzmn1-4eN5NHhqGKpJHUOWty4dE-U7jetP6zlXzUFDUYqSFLO85XNfiftBUTOroNeuGClzYUG~1uFi4YVwlsiFqw3Dy8I9TuNzWznFBRnBvaU1AxB6m~4O9rYyHd9iM5h5Zj5jLPlOyND3lagPIW7~wUwRdObg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA);
+  background-image: url('images/meetnewpeople.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -224,8 +223,6 @@ li{
 .header-content-text{
   position:relative;
   text-align: center;
-  margin-top: -12%;
-  height: 60px;
   max-width: 731px;
   font-family: Montserrat;
   font-style: normal;
@@ -240,7 +237,7 @@ li{
   display: -webkit-box;
   display: -ms-flexbox;
   position: absolute;
-  width: 90%;
+  width: 66vw;
   max-width: 950px;
   margin-top: 100px;
   height: 65px;
@@ -868,28 +865,26 @@ li{
 .services{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background: #F9F9F9;
-  overflow-y: hidden;
+  justify-content: space-between;
+  width: 49vw;
   overflow-x: scroll;
+  margin-top: 70px;
+  margin-bottom: 50px;
 }
 .service{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-left: 10%;
-  width: 217px;
+  width: 15vw;
   height: 217px;
   background: #FFFFFF;
   border: 1px solid #E4E4E4;
   box-sizing: border-box;
 }
 .service img{
-  width: 142.31px;
-  height: 65.6px;
+  width: 9vw;
+  max-width: 142px;
 }
 @media screen and (max-width: 1000px){
   .services{
