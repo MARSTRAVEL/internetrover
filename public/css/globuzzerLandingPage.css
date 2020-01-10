@@ -37,15 +37,15 @@ li{
 
 .wrapper{
   position: absolute;
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 .header{
   position: relative;
-  height: 76vh;
+  height: 100vh;
   min-height: auto;
   overflow: hidden;
-  max-height: 950px;
 }
 
 .side-menu-mobile{
@@ -191,7 +191,7 @@ li{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/pictures/meetnewpeople.jpg");
+  background-image: url("/pictures/coverPicture.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -212,19 +212,15 @@ li{
     display: -webkit-box;
     display: flex;
     z-index: 4;
-    width: 95%;
-    max-width: 950px;
+    width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: auto;
 }
-
 .header-content-text{
-  position:relative;
   text-align: center;
-  max-width: 731px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -237,11 +233,9 @@ li{
   display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
-  position: absolute;
   width: 66vw;
-  max-width: 950px;
-  margin-top: 100px;
   height: 65px;
+  margin-top: 59px;
   background: #F9F9F9;
   border: 1px solid #C3C3C3;
   box-sizing: border-box;
