@@ -7,7 +7,7 @@ router.get('/login',admincontrol.getlogin);
 router.post('/login',admincontrol.postlogin);
 router.get('/logout',admincontrol.logout);
 router.get('/xiaogaogao',admincontrol.xiaogaogao);
-
+router.get('/xiaogaogao/idp',admincontrol.idp);
 
 router.get('/jobhunting',admincontrol.jobhunting);
 router.post('/jobhunting',admincontrol.savejobhunting);

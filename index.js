@@ -39,6 +39,7 @@ mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true});
 
 app.use('/admin', adminrouters);
 app.use('/', clientrouters);
+
 // cache static files for one day
 app.use(express.static('public', {maxAge: 86400}));
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>InternetRover</title>
+  <link rel="shortcut icon" href='../pictures/icon.ico'>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+    <button type="button" name="button" id="airQuality">Air Quality</button>
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+  /*
+    $("#airQuality").click(function() {
+      let dataset;
+      $.ajax({
+        method: 'GET',
+        url: 'http://www.pm25.in/api/querys/pm2_5.json?city=zhuhai&token=5j1znBVAsnSf5xQyNQyq',
+        dataType: 'jsonp', //change the datatype to 'jsonp' works in most cases
+        success: (res) => {
+          console.log(res);
+        },
+        fail: (err)=>{
+          console.log(err);
+        }
+      })
+    });
+    */
+   function Person(firstName, lastName){
+     console.log(this);
+     this.firstName = firstName;
+     this.lastName = lastName;
+     console.log('the functionis involved!');
+   }
+   Person.prototype.getFullName = function(){
+     return this.firstName + '' + this.lastName;
+   }
+
+   let person = {
+     firstName: 'default',
+     lastName : 'default',
+     getFullName: function(){
+       return 'full name is:'+ this.firstName + this.lastName;
+     }
+   };
+
+   // create new object
+   let john = Object.create(person);
+   console.log(person);
+   john.firstName = 'Liu';
+   john.lastName = 'Yunlong';
+   console.log(john);
+  </script>
+
+</body>
+
+</html>

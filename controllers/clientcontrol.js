@@ -20,6 +20,7 @@ exports.getindex = function(req, res){
   res.setHeader('Cache-Control', 'public, max-age=3000');
   res.render('client/index');
   };
+
 exports.service = function(req, res){
   res.render('client/services');
 }

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="The intetnetRover Project@marstravel.fi">
@@ -10,93 +8,285 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InternetRover</title>
   <link rel="shortcut icon" href='../pictures/icon.ico'>
-  <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Icon -->
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
 </head>
-
 <body>
-  <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading" id="logo">
-        <canvas id="canvas" width="280" height="90"></canvas>
-      </div>
-      <div class="list-group list-group-flush">
-        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
-        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
-        <a href="/generatecv" class="list-group-item list-group-item-action bg-light">generateCv</a>
-        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
-        <a href="/blog" class="list-group-item list-group-item-action bg-light">Blog</a>
-        <a href="/about" class="list-group-item list-group-item-action bg-light">About</a>
-      </div>
-    </div>
-
+  <div class="wrapper">
+    <% include ../commenComponents/header %>
     <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">
-          <i class="fa fa-navicon" style="font-size:20px"></i>
-        </button>
-      </nav>
-      <div class="" style="text-align: center">
-        <canvas id="indeximage_canvas" width="800" height="450"></canvas>
-      </div>
-      <div style="text-align: center">
-        <canvas id="typingcanvas"></canvas>
-      </div>
-      <div class="d-flex flex-row justify-content-center">
-          <div class="p-2 zoom zoom1" id="zoom1">
-            <div class="hiddenText">
-              <img src="pictures/Hermanus.jpg" id="gao">
+    <main>
+    <!-- headerSection -->
+      <section class="headerSection" id="headerSection">
+        <div id="headerBgVideo" class="welcome">
+          <div class="welcome-container">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="welcome-content">
+              <h1>Welcome</h1>
+              <p>A welcome is a kind of greeting designed to
+                introduce a person to a new place or situation,
+                and to make them feel at ease. The term can similarly
+                be used to describe the feeling of being accepted on the
+                part of the new person.
+              </p>
             </div>
           </div>
-          <div class="p-2 zoom zoom2" >
-            <div class="hiddenText">
-              <img src="pictures/Hermanus.jpg" alt="" id="gao">
+          <div class="welcome-background">
+            <video autoplay loop muted>
+              <source src="videos/sea.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <!-- coronaVirusAwareness -->
+      <section class="coronaVirusAwareness" id="coronaVirusAwareness">
+        <div class="section-tl">
+          <h1 class="sectiontitle">Self Care</h1>
+        </div>
+        <div class="boxesContainer">
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/washing-hand.png" alt="washing-hand">
+              <p>Washing hangds with soap and running water when hands touched something dirty.</p>
+            </div>
+            <div class="back">
+              <p>
+                if your hands are not visibly dirty,frequently clean then by using alcohol-based hand rub or soap and water.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
             </div>
           </div>
-          <div class="p-2 zoom zoom3" >
-            <div class="hiddenText">
-            <img src="pictures/Hermanus.jpg" id="gao">
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/cold.png" alt="cold">
+              <p>
+                When coughing ans sneezing, cover mouth and nose with flexed elbow or tissue.
+                Throw tissue into closed bin immediately after use.
+              </p>
+            </div>
+            <div class="back">
+              <p>
+                Cleaning yoiur hand with alcohol-based hand rup or soap and water after coughong or sneezing and when for the sick.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
             </div>
           </div>
-          <div class="p-2 zoom zoom4">
-            <div class="hiddenText">
-              <img src="pictures/Hermanus.jpg" id="gao">
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/fever.png" alt="fever">
+              <p>Monitor your temputure if you feel uncomfotable.</p>
+            </div>
+            <div class="back">
+              <p>
+                Monitor everyone's health for symptoms such as fever, cough and if difficult breathing appear, call your health care facility immediately.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
             </div>
           </div>
-          <div class="p-2 zoom zoom5">
-            <div class="hiddenText">
-              <img src="pictures/Hermanus.jpg" id="gao">
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/shake-hands.png" alt="shake-hands">
+              <p>Avoiding shaking hands seems become a polite greeting.</p>
+            </div>
+            <div class="back">
+              <p>
+                Respiratory virused can be passed by shaking hands
+                and touching your eyes, nose and mouth. Greet people
+                with a wave, a nod or a bow instead.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
             </div>
           </div>
-          <div class="p-2 zoom zoom6">
-            <div class="hiddenText">
-             <img src="pictures/Hermanus.jpg" id="gao">
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/cooking.png" alt="cooking">
+              <p>Eating healthy food to improve your immune system.</p>
+            </div>
+            <div class="back">
+              <p>
+                Strong immune system plays an important role at against
+                virus. Prepareing healthy food, intake enough vitmin daily.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/flight.png" alt="flight">
+              <p>Avoiding unnecessary flights</p>
+            </div>
+            <div class="back">
+              <p>
+                Traveling spread virues faster than you imagine.
+                Avoiding unnecessary flights can efficient slow down virus
+                spreading.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="content">
+              <img src="pictures/indexImg/medical-mask.png" alt="medical-mask">
+              <p>Wearing medical mask if you can get one</p>
+            </div>
+            <div class="back">
+              <p>
+                Mask can protect you from other people coughing or sneezing.
+                It also can protect others.
+                it's to wear mask when you go to crowded place, such as 
+                supermarket, library etc.
+              </p>
+              <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                <button>Read More</button>
+              </a>
             </div>
           </div>
         </div>
+      </section>
 
+      <!-- copeWithStress -->
+      <section class="copeWithStress" id="copeWithStress">
+        <div class="section-tl">
+          <h1 class="sectiontitle">Cope With Stress</h1>
+        </div>
+        <div class="copeItems">
+          <div class="copeItem">
+            <div class="close"></div>
+            <div class="cardWrapper">
+              <div>
+                <img src="pictures/indexImg/chat.png" alt="chat">
+                <div class="btnTl">
+                  <h2>Chatting</h2>
+                  <button>Read More</button>
+                </div>
+              </div>
+              <div class="showMore">
+                <h1>Chating with Friends</h1>
+                <p>It is normal to feel sad, stressed, confused, scared or
+                  angry during a crisis</p>
+                <p>Talking to people you trust can help. Contact your
+                  friends and family.</p>
+              </div>
+            </div>
+          </div>
+          <div class="copeItem">
+            <div class="close"></div>
+            <div class="cardWrapper">
+              <div>
+                <img src="pictures/indexImg/cinema.png" alt="cinema">
+                <div class="btnTl">
+                  <h2>Movies</h2>
+                  <button>Read More</button>
+                </div>
+              </div>
+              <div class="showMore">
+                <h1>Enjoy Movies with Families</h1>
+                <p>Limit worry and agitation by lessening the time you</p>
+                <p> and your family spend watching or listening to media</p>
+                <p>coverage that you perceive as upsetting.</p>
+              </div>
+            </div>
+          </div>
+          <div class="copeItem">
+            <div class="close"></div>
+            <div class="cardWrapper">
+              <div>
+                <img src="pictures/indexImg/vegetable.png" alt="vegetable">
+                <div class="btnTl">
+                  <h2>Cooking</h2>
+                  <button>Read More</button>
+                </div>
+              </div>
+              <div class="showMore">
+                <h1>Spend Time on Cooking</h1>
+                <p>If you must stay at home, maintain a healthy lifestyle -</p>
+                  <p>including proper diet, sleep, exercise and social contacts</p>
+                  <p>with loved ones at home and by email and phone with</p>
+                  <p>other family and friends.</p>
+              </div>
+            </div>
+          </div>
+          <div class="copeItem">
+            <div class="close"></div>
+            <div class="cardWrapper">
+              <div>
+                <img src="pictures/indexImg/online-course.png" alt="online-course">
+                <div class="btnTl">
+                  <h2>Learning</h2>
+                  <button>Read More</button>
+                </div>
+              </div>
+              <div class="showMore">
+                <h1>Learning New Skills</h1>
+                <p>Learning some new skills if you have much time to stay at home.</p>
+                <p>Spend much time to learning new things can help you</p>
+                <p>forget what is going on now. Haa, just a kidding.</p>
+                <p>Learning new things can always makes you fell excitng.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- personal projects -->
+      <section class="personalPrj" id="personalPrj">
+        <div class="section-tl">
+          <h1 class="sectiontitle">Portfolio</h1>
+        </div>
+        <div class="cardsWrapper">
+          <div class="cardPjt">
+            <h2>Dashboard</h2>
+            <p>Dashboard is a a place i implement my hobby project</p>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+          <div class="cardPjt">
+            <h2>Project1</h2>
+          </div>
+        </div>
+      </section>
+      <section style="width: 100vw; height:100vh;"></section>
+    </main>
   </div>
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="../vendor/logo.js"></script>
   <script type="text/javascript" src="../vendor/index.js"></script>
+  <script src="../vendor/simple-sidebar.js"></script>
   <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-
-  </script>
 </body>
-
 </html>

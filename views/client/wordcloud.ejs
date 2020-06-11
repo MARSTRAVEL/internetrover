@@ -11,58 +11,20 @@
   <link rel="shortcut icon" href='../pictures/icon.ico'>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
-  <!-- Custom styles for this template -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <style>
+    #page-content-wrapper{
+      width: 100%;
+    }
+    .mt-4{
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
 
   <div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading" id="logo">
-        <canvas id="canvas" width="280" height="90">
-        </canvas>
-      </div>
-      <div class="list-group list-group-flush">
-        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
-        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
-        <a href="/generatecv" class="list-group-item list-group-item-action bg-light">generateCv</a>
-        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
-        <a href="/blog" class="list-group-item list-group-item-action bg-light">Blog</a>
-        <a href="/about" class="list-group-item list-group-item-action bg-light">About</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
     <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle"><i class="fa fa-navicon" style="font-size:20px"></i></button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<!--
-<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-<li class="nav-item active">
-     <span class="sr-only">(current)</span>
-  <p>
-  //  <a>Welcome, </a>
-    <a href="logout">LOGOUT</a>
-  </p>
-</li>
-</ul>
-
--->        </div>
-      </nav>
-
       <div class="container-fluid">
         <h1 class="mt-4">Word Cloud</h1>
         <div class="wordcloud" style="width:60%;">

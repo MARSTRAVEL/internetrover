@@ -1,132 +1,66 @@
 
-const typingcanvas = document.getElementById('typingcanvas');
-const typing = typingcanvas.getContext('2d');
+let scrollTop;
 
-typingcanvas.height = window.innerHeight*0.2;
-typingcanvas.width = window.innerWidth;
+const navOverlay = document.querySelector('.navOverlay');
 
-const drawtext = (wordStr, xPos, yPos) =>{
-  typing.font = "30px Arial";
-  typing.fillText(wordStr, xPos, yPos);
-};
+// get viewpoint height
+// const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-const typingWord = () =>{
-  let gapBetweenWord = 0.05;
-  let startDrawPosition  =0.3;
+const card = document.querySelectorAll('.copeItem');
 
-  if (window.innerWidth<=600) {
-    gapBetweenWord = 0.13;
-    startDrawPosition =0.01;
-  }
-
-  const stringArr = ['Hi,', 'You', 'Are', 'Here.', 'Welcome!'];
-  let i=0;
-  let timer = setInterval(function(){
-      typing.font = "30px Arial";
-      typing.fillText(stringArr[i], window.innerWidth*startDrawPosition, 50);
-      startDrawPosition += gapBetweenWord;
-      i += 1;
-      if (i>=5) {
-        clearInterval(timer);
-        return;
-      }
-
-    }, 300);
-};
-//typingWord();
-
-const image_canvas = document.getElementById('indeximage_canvas');
-const imagecontext = image_canvas.getContext('2d');
-
- function drawCanvasImage(canvas, width, height){
-  const img=new Image();
-  img.src = "pictures/juliaset.jpg";
-  img.onload = function () {
-    canvas.drawImage(img, 0, 0);
-  };
-};
-
-const shuffleArray = (array) =>{
-  for(let i = 500; i < array.length; i += 1000){
-  const random1 = Math.floor(Math.random() * 1000000)*2;
-  const random2 = Math.floor(Math.random() * 1000000)*2;
-
- for (let j = 0; j < 30; j +=4) {
-
-   let tem1 = array[random1+j];
-   let tem2 = array[random1+j+1];
-   let tem3 = array[random1+j+2];
-
-   array[random1+j] = array[random2+j];
-   array[random1+j+1] = array[random2+j+1];
-   array[random1+j+2] = array[random2+j+2];
-
-   array[random2+j] = tem1;
-   array[random2+j+1] = tem2;
-   array[random2+j+2] = tem3;
-
-    tem1 = array[random1+3200+j];
-   tem2 = array[random1+j+3200+1];
-   tem3 = array[random1+j+3200+2];
-
-   array[random1+j+3200] = array[random2+j+3200];
-   array[random1+j+1+3200] = array[random2+j+1+3200];
-   array[random1+j+2+3200] = array[random2+j+2+3200];
-
-   array[random2+j+3200] = tem1;
-   array[random2+j+1+3200] = tem2;
-   array[random2+j+2+3200] = tem3;
-
-    tem1 = array[random1+3200*2+j];
-    tem2 = array[random1+j+3200*2+1];
-    tem3 = array[random1+j+3200*2+2];
-
-   array[random1+j+3200*2] = array[random2+j+3200*2];
-   array[random1+j+1+3200*2] = array[random2+j+1+3200*2];
-   array[random1+j+2+3200*2] = array[random2+j+2+3200*2];
-
-   array[random2+j+3200*2] = tem1;
-   array[random2+j+1+3200*2] = tem2;
-   array[random2+j+2+3200*2] = tem3;
-
-       tem1 = array[random1+3200*3+j];
-       tem2 = array[random1+j+3200*3+1];
-       tem3 = array[random1+j+3200*3+2];
-
-      array[random1+j+3200*3] = array[random2+j+3200*3];
-      array[random1+j+1+3200*3] = array[random2+j+1+3200*3];
-      array[random1+j+2+3200*3] = array[random2+j+2+3200*3];
-
-      array[random2+j+3200*3] = tem1;
-      array[random2+j+1+3200*3] = tem2;
-      array[random2+j+2+3200*3] = tem3;
-
-      tem1 = array[random1+3200*4+j];
-      tem2 = array[random1+j+3200*4+1];
-      tem3 = array[random1+j+3200*4+2];
-
-     array[random1+j+3200*4] = array[random2+j+3200*4];
-     array[random1+j+1+3200*4] = array[random2+j+1+3200*4];
-     array[random1+j+2+3200*4] = array[random2+j+2+3200*4];
-
-     array[random2+j+3200*4] = tem1;
-     array[random2+j+1+3200*4] = tem2;
-     array[random2+j+2+3200*4] = tem3;
- }
+const hideAllCards=()=>{
+  card.forEach(element=>element.style.display='none');
 }
+const showAllCards=()=>{
+  card.forEach(element=>element.style.display='block');
 };
 
-drawCanvasImage(imagecontext);
+const close = document.querySelectorAll('.copeItem')
 
-document.getElementById('indeximage_canvas').addEventListener("click", function(e){
-  let xPosition = e.clientX;
-  let yPosition = e.clientY;
-  const imgData = imagecontext.getImageData(0, 0, image_canvas.width, image_canvas.height);
-  const orginalImage = imgData;
-  shuffleArray(imgData.data);
-  imagecontext.putImageData(imgData, 0, 0);
-});
+card.forEach(element=(ele)=>{
 
-document.getElementById('indeximage_canvas').addEventListener("dblclick",function(){
-  drawCanvasImage(imagecontext);
+  ele.querySelector('.cardWrapper').addEventListener("click",(env)=>{
+
+    hideAllCards();
+    env.currentTarget.parentNode.style.display = 'flex';
+    env.currentTarget.parentNode.classList.add('showSingleCard');
+    env.currentTarget.previousElementSibling.style.opacity = '1';
+    env.currentTarget.lastElementChild.style.display = 'block';
+    env.currentTarget.querySelector('.btnTl').style.display = 'none';
+  });
+
+  ele.querySelector('.close').addEventListener("click",(env)=>{
+    showAllCards();
+    env.currentTarget.parentNode.classList.remove('showSingleCard');
+    env.currentTarget.style.opacity = '0';
+    ele.querySelector('.showMore').style.display = 'none';
+    ele.querySelector('.btnTl').style.display = 'block';
+  });
+
+  }
+);
+
+const isInViewport=(element)=> {
+	var position = element.getBoundingClientRect();
+
+	// checking whether fully visible
+	if(position.top >= 0 && position.bottom <= window.innerHeight) {
+		return true;
+	}
+	// checking for partial visibility
+	if(position.top < window.innerHeight && position.bottom >= 0) {
+		return true;
+	}
+	return false;
+}
+
+const selfCare = document.getElementById('slefCareCard');
+
+window.addEventListener('scroll', function(e) {
+  scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+  if(scrollTop > 60){
+    navOverlay.style.display == 'block'? null:navOverlay.style.display = 'block';
+  }else{
+    navOverlay.style.display == 'block'? navOverlay.style.display = 'none':null;
+  }
 });

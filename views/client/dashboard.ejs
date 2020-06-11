@@ -11,107 +11,75 @@
   <title>InternetRover</title>
   <link rel="shortcut icon" href='../pictures/icon.ico'>
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- Icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Custom styles for this template -->
-  <!-- Custom styles for this template -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/todolist.css">
-
+  <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
-
 <body>
-
-  <div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading" id="logo">
-        <canvas id="canvas" width="280" height="90">
-      </div>
-      <div class="list-group list-group-flush">
-        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="/contact" class="list-group-item list-group-item-action bg-light">Contact</a>
-        <a href="/news" class="list-group-item list-group-item-action bg-light">News</a>
-        <a href="/generatecv" class="list-group-item list-group-item-action bg-light">generateCv</a>
-        <a href="/wordcloud" class="list-group-item list-group-item-action bg-light">WordCloud</a>
-        <a href="/blog" class="list-group-item list-group-item-action bg-light">Blog</a>
-        <a href="/about" class="list-group-item list-group-item-action bg-light">About</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle"><i class="fa fa-navicon" style="font-size:20px"></i></button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                 <span class="sr-only">(current)</span>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
+  <div id="wrapper">
+    <% include ../commenComponents/header %>
+  <section class="dashboardDes">
+    <article>
+      <h1>projects Playground</h1>
+      <hr>
+      <p>This is a place which i test some interesting idea.</p>
+    </article>
+  </section>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
       <div class="container-fluid">
-        <div class="row" style="height:40%">
-          <div class="container_weather col-lg-3 col-md-3 col-sm-12 col-xs-12" id ="weather">
-            <header class="header">
-              <div class="search">
+        <div class="row">
+          <div class="container_weather" id ="weather">
+            <header class="weatherTl">
                 <input type="text" placeholder="Enter City Name" id="search_city" >
                 <button type="button" name="button" id="current_weather">search</button>
-              </div>
             </header>
             <main id="main">
-              <div class="city-icon">
+              <div class="city-icon tem-lf">
                 <div class="city-icon-holder">
                   <div id="cityName"></div>
                   <img src="" alt="" id="icon">
                 </div>
               </div>
-              <div class="temperature">
-                <div id="tempature"></div>
-              </div>
-              <div class="humidity">
-                <div id="humidity"></div>
-              </div>
-              <div class="pressure">
-                <div id="pressure"></div>
-              </div>
-              <div class="wind">
-                <div id="wind"></div>
+              <div class="tem-rg">
+                <div class="temperature tempItem">
+                  <div id="tempature"></div>
+                </div>
+                <div class="humidity tempItem">
+                  <div id="humidity"></div>
+                </div>
+                <div class="pressure tempItem">
+                  <div id="pressure"></div>
+                </div>
+                <div class="wind tempItem">
+                  <div id="wind"></div>
+                </div>
               </div>
             </main>
           </div>
-          <div class="container_todolist col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <div id="myDIV" class="header">
+          <div class="container_todolist">
+            <div id="myDIV" class="todoHeader">
               <h2 style="margin:5px"> Draggable To Do List</h2>
               <input type="text" id="myInput" placeholder="Task To Do...">
-              <span onclick="newElement()" class="addBtn">Add</span>
+              <button onclick="newElement()" class="addBtn">ADD</button>
             </div>
-            <div class="row">
+            <div class="todoContent">
               <div class="col-4" style="height: 100%; width:30%;">
-                <h4>Todo</h4>
+                <h4>TODO</h4>
                 <ul class = 'todolist  connectedSortable' id="todo">
                   <li>Task To Do </li>
                 </ul>
               </div>
               <div class="doing col-4" style="height: 100%; width:30%;">
-                <h4>Doing</h4>
+                <h4>DOING</h4>
                 <ul class = ' todolist  connectedSortable' id="doing">
                   <li>Task Doing</li>
                 </ul>
               </div>
               <div class="donelist col-4 "  style="height: 100%; width:30%;">
-                <h4>Done</h4>
+                <h4>DONE</h4>
                 <ul class = 'todolist connectedSortable' id = 'done'>
                   <li>Task Done</li>
                 </ul>
@@ -119,33 +87,26 @@
             </div>
           </div>
         </div>
-        <div class="row dashboard_row">
+        <div class="dashboard_row">
+          <div class="d-flex" id="time_series">
+            <div class="p-2 timeSerie"><a class="btn" id="interval" role="button">60Min</a></div>
+            <div class="p-2 timeSerie"><a class="btn daily" id="daily" role="button">Daily</a></div>
+            <div class="p-2 timeSerie"><a class="btn weekly" id="weekly">Weekly</a></div>
+            <div class="p-2 timeSerie"><a class="btn monthly" id="monthly">Monthly</a></div>
+          </div>
           <div class="stock col-9">
             <canvas id="linechart_canvas" height="400px" ></canvas>
           </div>
-          <div class="col-2">
-            <div class="d-flex align-items-start flex-column" id="time_series">
-              <div class="p-2 timeSerie"><a class="btn" id="interval" role="button">60Min</a></div>
-              <div class="p-2 timeSerie"><a class="btn daily" id="daily" role="button">Daily</a></div>
-              <div class="p-2 timeSerie"><a class="btn weekly" id="weekly">Weekly</a></div>
-              <div class="p-2 timeSerie"><a class="btn monthly" id="monthly">Monthly</a></div>
-          </div>
-        </div>
       </div>
     </div>
-    <!-- /#page-content-wrapper -->
-
   </div>
-  <!-- /#wrapper -->
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="../vendor/logo.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript" src="../vendor/dashboard.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../vendor/simple-sidebar.js"></script>
   <!-- Menu Toggle Script -->
   <script>
   $("#menu-toggle").click(function(e) {
