@@ -7,9 +7,10 @@
   <meta name="author" content="Yunlong Liu">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InternetRover</title>
-  <link rel="shortcut icon" href='../pictures/icon.ico'>
-  <link href="css/simple-sidebar.css" rel="stylesheet">
-  <link href="css/index.css" rel="stylesheet">
+  <link href='../pictures/icon.ico' rel="shortcut icon">
+  <link type="text/css" href="css/simple-sidebar.css" rel="stylesheet" >
+  <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet">
+  <link type="text/css" href="css/index.css" rel="stylesheet">
 </head>
 <body>
   <div class="wrapper">
@@ -26,12 +27,16 @@
             <span></span>
             <div class="welcome-content">
               <h1>Welcome</h1>
-              <p>A welcome is a kind of greeting designed to
-                introduce a person to a new place or situation,
-                and to make them feel at ease. The term can similarly
-                be used to describe the feeling of being accepted on the
-                part of the new person.
+              <p>
+                <br>
+                Wramly welcome you visit my webpage.This is a place is implement my
+                interested idea and help friend to solve some problems.
+                The webpae is both for web developer or non-developer.
+                <br>
+                For Developer: Hope you can find useful component and give you some hints to create grate thigns.
+                For Non-developer: Well, more info wait for you to discover.
               </p>
+              <p style="font-size:100px">&#128540;</p>
             </div>
           </div>
           <div class="welcome-background">
@@ -250,43 +255,65 @@
           <h1 class="sectiontitle">Portfolio</h1>
         </div>
         <div class="cardsWrapper">
-          <div class="cardPjt">
-            <h2>Dashboard</h2>
-            <p>Dashboard is a a place i implement my hobby project</p>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
-          <div class="cardPjt">
-            <h2>Project1</h2>
-          </div>
+          <a href="/dashboard">
+            <div class="cardPjt">
+              <h2>Dashboard</h2>
+              <p>Dashboard is a a place i implement my hobby project</p>
+            </div>
+          </a>
+          <a href="/contact">
+            <div class="cardPjt">
+              <h2>Contact</h2>
+              <p>Contact is a contacts management app which is allow user to create account and manipulate contacts</p>
+            </div>
+          </a>
+          <a href="/news">
+            <div class="cardPjt">
+              <h2>News</h2>
+              <p>A onGoing project to scrape interesting news. If news does not display, it means it is blocked.</p>
+            </div>
+          </a>
+          <a href="/generatecv">
+            <div class="cardPjt">
+              <h2>Generate CV</h2>
+              <p>Fill information addording to promotion, then click submit. It will generate cv with template.</p>
+            </div>
+          </a>
+          <a href="/wordcloud">
+            <div class="cardPjt">
+              <h2>Word Cloud</h2>
+              <p>Word Cloud ismy thesis IT project which use my own algorightm, later on i will display on Google map with selected city or country shape.</p>
+            </div>
+          </a>
+          <a href="/blog">
+            <div class="cardPjt">
+              <h2>Blog</h2>
+              <p>Blog is a simple blog that user can post and review blogs.</p>
+            </div>
+          </a>
         </div>
       </section>
-      <section style="width: 100vw; height:100vh;"></section>
+      <section style="width: 100vw; height:100vh;" id="live_convid_section">
+        <div class="section-tl">
+          <h1 class="sectiontitle">Live CONVID-19</h1>
+        </div>
+        <div class="total_convid" id="total_convid">
+        </div>
+        <div id="example-table"></div>
+      </section>
     </main>
   </div>
-  <!-- Bootstrap core JavaScript -->
+
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js"></script>
   <script src="../vendor/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="../vendor/index.js"></script>
   <script src="../vendor/simple-sidebar.js"></script>
-  <!-- Menu Toggle Script -->
+  <script type="text/javascript" src="../vendor/index.js"></script>
+  <script>
+    $(document).ready(function() {
+      // page loading flash
+      $("body").fadeIn(1000);
+      $("body").css('display', 'flex')
+    });
+  </script>
 </body>
 </html>

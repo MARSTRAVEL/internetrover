@@ -1,10 +1,133 @@
-.cv-container{
-height: 100%;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat,sans-serif;
+  outline: none !important;
+  /* -webkit-font-smoothing: antialiased; */
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
+*, :after, :before {
+  box-sizing: border-box;
+}
+h4{
+  font-size: 14px;
+}
+/* prevent white space when over scroll */
+html {
+  overscroll-behavior: none;
+  /* support IE */
+  -ms-scroll-chaining:none;
+  -webkit-overflow-scrolling:none;
+  font-size: 12px;
+}
+body {
+  display: none;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  min-width: 320px;
+ 
+}
+
+a {text-decoration: none;color: #002651;}
+li{list-style: none;}
+.description{
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 18px;
+  text-align: left;
+}
+#wrapper{
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#page-content-wrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.cv-container{
+  display: flex;
+  width: 21cm;
+  height: 29.7cm;
+}
+.main-wrapper{
+  padding-left: 20px;
+}
 .side-wrapper{
   border-style: none none none dotted;
   border-color: green;
+  padding: 0 20px;
+}
+.flex-row{
+  display: flex;
+  align-items: center;
+}
+.summary{
+  padding-top: 10px;
+}
+.experience{
+}
+.experience-item{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  border-bottom: 1px black solid;
+}
+.experience-item p:nth-child(2){
+  padding-top: 10px;
+}
+
+.experience-title{
+  width: 30%;
+}
+.experience_description{
+  width: 70%;
+}
+.company-name{
+  font-size: 14px;
+}
+.experience_description h4{
+  font-size: 14px;
+}
+.experience_description p{
+  padding: 10px 0;
+}
+.title_mainWrapper h2{
+  margin-left:2%;
+}
+
+.title_mainWrapper i{
+  font-size:30px;
+}
+
+.proj{
+  align-items: baseline;
+}
+.proj p{
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+.projects h4{
+  width: 100px;
+}
+.education .flex-row{
+  align-items: baseline;
+}
+.education .name_date{
+  padding-bottom: 20px;
+}
+.techSkill-container span{
+  padding-left: 10px;
+  padding-top: 5px;
+  color: white;
 }
 
 .side-wrapper ul{
@@ -19,22 +142,6 @@ height: 100%;
 
 .side-wrapper li{
   padding-top: 3%;
-}
-
-.experience{
-  margin-top: 5%;
-}
-
-.title_mainWrapper h2{
-  margin-left:2%;
-}
-
-.title_mainWrapper i{
-  font-size:36px;
-}
-
-.experience_description{
-  margin-top:-1%;
 }
 
 #progress{

@@ -22,6 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Lato", sans-serif;
+  display: none;
 }
 a {
     text-decoration: none;
@@ -66,6 +67,9 @@ main .coronaVirusAwareness{
 .sectionTitle{
   font-size: 40px;
   line-height: normal;
+}
+#headerSection{
+  transition: 1s ease-in;
 }
 /* headerSection */
 #headerSection, .welcome{
@@ -158,6 +162,7 @@ main .coronaVirusAwareness{
 }
 .welcome-background video{
   position: relative;
+  transition: 1s ease-in-out;
 }
 @keyframes animate {
   0%{
@@ -217,6 +222,7 @@ main .coronaVirusAwareness{
   opacity: 1;
   transform: rotateY(180deg);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari */
   transition: .5s;
   display: flex;
   flex-direction: column;
@@ -229,6 +235,7 @@ main .coronaVirusAwareness{
 .boxesContainer .box:hover .content{
   transform: rotateY(180deg);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari */
 }
 .boxesContainer .box:hover .back{
   transform: rotateY(0deg);
@@ -427,20 +434,53 @@ main .copeWithStress{
   flex-wrap: wrap;
   justify-content: space-evenly;
   overflow: scroll;
+  padding: 0 20px 30px 20px;
 }
 
 .cardPjt{
   position: relative;
   width: 200px;
-  height: 200px;
-  background: #22d1ee;
+  height: 300px;
+  background: #071a52;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   color: white;
+  border-radius: 20px;
+  box-shadow: 5px 10px 18px #888888;
+}
+.cardPjt:hover{
+  box-shadow: 5px 20px 18px #888888;
+}
+.cardPjt h2{
+  padding:20px 0;
 }
 .cardPjt p{
   text-align: center;
+}
+/* .coronaVirusAwareness, .copeWithStress, #personalPrj{
+  display: none;
+} */
+
+/* live convid19 */
+.total_convid{
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1440px;
+  font-size: 40px;
+  background: #cb3b3b;
+  color: white;
+  margin-top: 20px;
+}
+.convid_card{
+  padding: 20px;
+}
+.convid_card2{
+  display: flex;
+  padding: 20px 0;
 }
